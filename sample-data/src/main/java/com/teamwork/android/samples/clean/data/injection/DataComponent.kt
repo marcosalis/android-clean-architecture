@@ -7,6 +7,7 @@ import com.teamwork.android.samples.clean.data.injection.module.internal.Network
 import com.teamwork.android.samples.clean.data.injection.module.internal.ThreadingModule
 import dagger.BindsInstance
 import dagger.Component
+import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Singleton
 
 /**
@@ -18,12 +19,12 @@ import javax.inject.Singleton
  */
 @Singleton
 @Component(
-        modules = [
-            NetworkModule::class,
-            ThreadingModule::class,
-            // dependency class bindings
-            DataRepoBindingModule::class
-        ]
+    modules = [
+        NetworkModule::class,
+        ThreadingModule::class,
+        // dependency class bindings
+        DataRepoBindingModule::class
+    ]
 )
 internal interface DataComponent : DataAccessComponent {
 
@@ -40,7 +41,7 @@ internal interface DataComponent : DataAccessComponent {
 
     @Component.Factory
     interface Factory {
-        fun create(@BindsInstance applicationContext: Context): DataComponent
+        fun create(@ApplicationContext @BindsInstance applicationContext: Context): DataComponent
     }
 
     //region `data` layer internal dependencies

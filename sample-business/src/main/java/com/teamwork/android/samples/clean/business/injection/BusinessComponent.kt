@@ -10,6 +10,7 @@ import dagger.BindsInstance
 import dagger.Component
 import dagger.hilt.EntryPoint
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import java.util.concurrent.ExecutorService
 import javax.inject.Named
@@ -46,12 +47,12 @@ interface BusinessComponent {
 
 @Singleton
 @Component(
-        modules = [
-            InteractorsBindingModule::class
-        ],
-        dependencies = [
-            DataAccessComponent::class
-        ]
+    modules = [
+        InteractorsBindingModule::class
+    ],
+    dependencies = [
+        DataAccessComponent::class
+    ]
 )
 internal interface InternalBusinessComponent : BusinessComponent {
 
@@ -68,12 +69,11 @@ internal interface InternalBusinessComponent : BusinessComponent {
 
     @Component.Factory
     interface Factory {
-        fun create(@BindsInstance applicationContext: Context,
-                   dataAccessComponent: DataAccessComponent
+        fun create(
+            @ApplicationContext @BindsInstance applicationContext: Context,
+            dataAccessComponent: DataAccessComponent
         ): InternalBusinessComponent
     }
-
-    fun appContext(): Context
 
     //region `data` layer injectable classes
 

@@ -8,16 +8,18 @@ import com.teamwork.android.samples.clean.data.access.DataRequest
 import com.teamwork.android.samples.clean.data.access.feature1.Entity1Repo
 import com.teamwork.android.samples.clean.entity.feature1.Entity1
 import com.teamwork.android.samples.clean.entity.feature1.Entity1List
+import dagger.hilt.android.qualifiers.ApplicationContext
 import okhttp3.OkHttpClient
 import javax.annotation.concurrent.ThreadSafe
 import javax.inject.Inject
 
 @ThreadSafe
+@Suppress("unused")
 class Entity1RepoImpl
 @Inject constructor(
-        appContext: Context,
-        okHttpClient: OkHttpClient,
-        moshi: Moshi
+    @ApplicationContext val appContext: Context,
+    val okHttpClient: OkHttpClient,
+    val moshi: Moshi
 ) : Entity1Repo {
 
     override fun initialize() {} // does initialization stuff!

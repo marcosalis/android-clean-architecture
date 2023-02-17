@@ -12,8 +12,10 @@ import javax.inject.Named
 class Feature2DetailsPresenter @Inject constructor(
     private val interactor: Feature2DetailsInteractor,
 
-        @Named(BusinessComponent.GLOBAL_COMPUTATION_EXECUTOR)
-        private val computationExecutor: ExecutorService
+    // @ApplicationContext private val appContext: Context,
+
+    @Named(BusinessComponent.GLOBAL_COMPUTATION_EXECUTOR)
+    private val computationExecutor: ExecutorService
 
     // private val internalInteractor: InternalInteractor // this (and rightly so) doesn't even compile!
 ) : BasePresenter<Feature2DetailsView>(), Interactor.Callback<Entity2> {

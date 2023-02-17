@@ -3,12 +3,12 @@
 package com.teamwork.android.samples.clean.app
 
 import android.app.Application
-
 import com.teamwork.android.samples.clean.app.injection.ApplicationComponent
 import com.teamwork.android.samples.clean.app.injection.DaggerApplicationComponent
 import com.teamwork.android.samples.clean.business.SampleBusinessApplication
 import com.teamwork.android.samples.clean.business.injection.BusinessComponent
 import com.teamwork.android.samples.data.bridge.DataBridgeInitializer
+import dagger.hilt.android.HiltAndroidApp
 
 /**
  * Projects [Application] concrete class.
@@ -16,7 +16,7 @@ import com.teamwork.android.samples.data.bridge.DataBridgeInitializer
  * Don't use for lengthy unnecessary initializations, as anything executed here on the main thread will delay the
  * application startup and UI.
  */
-// @HiltAndroidApp
+@HiltAndroidApp
 class SampleApplication : SampleBusinessApplication() {
 
     override fun onCreate() {
@@ -48,6 +48,7 @@ class SampleApplication : SampleBusinessApplication() {
 
     private fun buildAppComponent(businessComponent: BusinessComponent): ApplicationComponent {
         return DaggerApplicationComponent.builder()
+            .appContext(this)
             .businessComponent(businessComponent)
             .build()
     }
