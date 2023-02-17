@@ -5,6 +5,7 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import com.teamwork.android.samples.clean.data.BuildConfig
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.migration.DisableInstallInCheck
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import javax.inject.Singleton
@@ -13,6 +14,7 @@ import javax.inject.Singleton
  * Module that provides singleton components for networking dependencies and API.
  */
 @Module
+@DisableInstallInCheck
 internal object NetworkModule {
 
     //region OkHttp

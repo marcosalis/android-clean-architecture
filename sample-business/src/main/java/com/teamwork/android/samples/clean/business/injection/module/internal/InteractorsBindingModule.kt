@@ -11,6 +11,7 @@ import com.teamwork.android.samples.clean.business.internal.InternalInteractor
 import com.teamwork.android.samples.clean.business.internal.InternalInteractorImpl
 import dagger.Binds
 import dagger.Module
+import dagger.hilt.migration.DisableInstallInCheck
 import javax.inject.Singleton
 
 /**
@@ -21,6 +22,7 @@ import javax.inject.Singleton
  * interfaces in [BusinessComponent].
  */
 @Module
+@DisableInstallInCheck
 internal interface InteractorsBindingModule {
 
     //region interactor binders

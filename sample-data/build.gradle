@@ -2,6 +2,7 @@ plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
 }
 
 android {
@@ -34,6 +35,14 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    kapt {
+        correctErrorTypes true
+    }
+
+    hilt {
+        enableAggregatingTask = true
+    }
 }
 
 dependencies {
@@ -44,9 +53,9 @@ dependencies {
 
     // third party dependencies
 
-    // Dagger for Dependency Injection
-    implementation "com.google.dagger:dagger:${versions.dagger}"
-    kapt "com.google.dagger:dagger-compiler:${versions.dagger}"
+    // Dagger/Hilt for Dependency Injection
+    implementation "com.google.dagger:hilt-android:${versions.dagger}"
+    kapt "com.google.dagger:hilt-compiler:${versions.dagger}"
 
     /*
      * These dependencies are confined in the data layer.

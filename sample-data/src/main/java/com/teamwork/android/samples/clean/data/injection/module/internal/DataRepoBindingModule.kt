@@ -6,6 +6,7 @@ import com.teamwork.android.samples.clean.data.feature1.Entity1RepoImpl
 import com.teamwork.android.samples.clean.data.feature2.Entity2RepoImpl
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.migration.DisableInstallInCheck
 
 import javax.inject.Singleton
 
@@ -13,6 +14,7 @@ import javax.inject.Singleton
  * Dagger class bindings for data repository components.
  */
 @Module
+@DisableInstallInCheck
 internal object DataRepoBindingModule {
 
     @Provides
