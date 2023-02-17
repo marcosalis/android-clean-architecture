@@ -7,8 +7,8 @@ import com.teamwork.android.samples.clean.app.injection.ApplicationComponent
 import com.teamwork.android.samples.clean.app.injection.DaggerApplicationComponent
 import com.teamwork.android.samples.clean.business.SampleBusinessApplication
 import com.teamwork.android.samples.clean.business.injection.BusinessComponent
-import com.teamwork.android.samples.data.bridge.DataBridgeInitializer
 import dagger.hilt.android.HiltAndroidApp
+import timber.log.Timber
 
 /**
  * Projects [Application] concrete class.
@@ -19,8 +19,14 @@ import dagger.hilt.android.HiltAndroidApp
 @HiltAndroidApp
 class SampleApplication : SampleBusinessApplication() {
 
+//    @EntryPoint
+//    @InstallIn(SingletonComponent::class)
+//    interface AppComponentEntryPoint : ApplicationComponent
+
     override fun onCreate() {
         instance = this
+        Timber.plant(Timber.DebugTree())
+
         super.onCreate()
     }
 
@@ -29,15 +35,15 @@ class SampleApplication : SampleBusinessApplication() {
     }
 
     override fun initializeDataComponent() {
-        DataBridgeInitializer.initialize(this)
+        // DataBridgeInitializer.initialize(this)
     }
 
     override fun initializeNetworkLayer() {
-        DataBridgeInitializer.initializeNetworkLayer(this)
+        // DataBridgeInitializer.initializeNetworkLayer(this)
     }
 
     override fun initializeCacheLayer() {
-        DataBridgeInitializer.initializeCacheLayer(this)
+        // DataBridgeInitializer.initializeCacheLayer(this)
     }
 
     override fun onDependencyManagementInitialized() {
@@ -52,6 +58,14 @@ class SampleApplication : SampleBusinessApplication() {
             .businessComponent(businessComponent)
             .build()
     }
+
+//    fun component(): AppComponentEntryPoint {
+//        // Use EntryPoints to get an instance of the AggregatorEntryPoint.
+//        return EntryPoints.get(
+//            this,
+//            AppComponentEntryPoint::class.java
+//        )
+//    }
 
     companion object {
 

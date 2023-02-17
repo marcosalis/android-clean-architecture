@@ -1,7 +1,6 @@
 package com.teamwork.android.samples.data.bridge
 
 import android.content.Context
-import com.teamwork.android.samples.clean.data.injection.DataLayerInitializer
 import com.teamwork.android.samples.data.bridge.DataBridgeInitializer.initialize
 import com.teamwork.android.samples.data.bridge.DataBridgeInitializer.initializeCacheLayer
 import com.teamwork.android.samples.data.bridge.DataBridgeInitializer.initializeNetworkLayer
@@ -17,23 +16,25 @@ import javax.inject.Singleton
  *
  * @see com.teamwork.android.samples.clean.data.access.DataAccessComponent
  * @see com.teamwork.android.samples.clean.data.injection.DataComponent
+ *
+ * FIXME: we probably don't need this anymore
  */
 @Singleton
 @ThreadSafe
 object DataBridgeInitializer {
 
-    private val dataInitializer: DataLayerInitializer by lazy { DataLayerInitializer() }
+    // private val dataInitializer: DataLayerInitializer by lazy { DataLayerInitializer() }
 
     fun initialize(appContext: Context) {
-        dataInitializer.initialize(appContext)
+        // dataInitializer.initialize(appContext)
     }
 
     fun initializeNetworkLayer(appContext: Context) {
-        dataInitializer.initializeNetworkLayer(appContext)
+        // dataInitializer.initializeNetworkLayer(appContext)
     }
 
     fun initializeCacheLayer(appContext: Context) {
-        dataInitializer.initializeCacheLayer(appContext)
+        // dataInitializer.initializeCacheLayer(appContext)
     }
 
 }

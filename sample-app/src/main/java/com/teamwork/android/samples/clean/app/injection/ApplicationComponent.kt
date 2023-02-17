@@ -15,10 +15,6 @@ import javax.inject.Singleton
 )
 interface ApplicationComponent {
 
-//    @EntryPoint
-//    @InstallIn(SingletonComponent::class)
-//    interface AggregatorEntryPoint : ApplicationComponent
-
     companion object {
         /**
          * The singleton instance for [ApplicationComponent].

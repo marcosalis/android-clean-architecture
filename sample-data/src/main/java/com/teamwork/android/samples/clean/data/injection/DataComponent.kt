@@ -1,14 +1,7 @@
 package com.teamwork.android.samples.clean.data.injection
 
-import android.content.Context
 import com.teamwork.android.samples.clean.data.access.DataAccessComponent
-import com.teamwork.android.samples.clean.data.injection.module.internal.DataRepoBindingModule
-import com.teamwork.android.samples.clean.data.injection.module.internal.NetworkModule
-import com.teamwork.android.samples.clean.data.injection.module.internal.ThreadingModule
-import dagger.BindsInstance
 import dagger.Component
-import dagger.hilt.android.qualifiers.ApplicationContext
-import javax.inject.Singleton
 
 /**
  * Dagger component for internal dependency injection of classes in the 'sample-data' module (data layer).
@@ -16,16 +9,18 @@ import javax.inject.Singleton
  * The [Component] extends from [DataAccessComponent] so that the required "public" dependencies that need
  * to be exposed to the business layer via a [provision method](https://dagger.dev/api/2.25.2/dagger/Component.html)
  * are declared here.
+ *
+ * FIXME: we probably don't need this anymore
  */
-@Singleton
-@Component(
-    modules = [
-        NetworkModule::class,
-        ThreadingModule::class,
-        // dependency class bindings
-        DataRepoBindingModule::class
-    ]
-)
+//@Singleton
+//@Component(
+//    modules = [
+//        NetworkModule::class,
+//        ThreadingModule::class,
+//        // dependency class bindings
+//        DataRepoBindingModule::class
+//    ]
+//)
 internal interface DataComponent : DataAccessComponent {
 
     companion object {
@@ -39,10 +34,10 @@ internal interface DataComponent : DataAccessComponent {
         lateinit var INSTANCE: DataComponent
     }
 
-    @Component.Factory
-    interface Factory {
-        fun create(@ApplicationContext @BindsInstance applicationContext: Context): DataComponent
-    }
+//    @Component.Factory
+//    interface Factory {
+//        fun create(@ApplicationContext @BindsInstance applicationContext: Context): DataComponent
+//    }
 
     //region `data` layer internal dependencies
 
@@ -53,7 +48,7 @@ internal interface DataComponent : DataAccessComponent {
 
     //region `data` layer injectable classes
 
-    fun inject(dataLayerInitializer: DataLayerInitializer)
+    // fun inject(dataLayerInitializer: DataLayerInitializer)
 
     //endregion
 

@@ -21,15 +21,13 @@ internal object ThreadingModule {
 
     @Provides
     @Singleton
-    @JvmStatic
     @Named(DataAccessComponent.GLOBAL_COMPUTATION_EXECUTOR)
     fun computationExecutorService(): ExecutorService =
-            // note: this thread pool sizing isn't reliable, it's just provided as an example
-            Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors())
+        // note: this thread pool sizing isn't reliable, it's just provided as an example
+        Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors())
 
     @Provides
     @Singleton
-    @JvmStatic
     @Named(DataAccessComponent.GLOBAL_IO_EXECUTOR)
     fun ioExecutorService(): ExecutorService = Executors.newCachedThreadPool()
 

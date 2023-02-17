@@ -22,18 +22,17 @@ internal object NetworkModule {
 
     @Provides
     @Singleton
-    @JvmStatic
     fun provideHttpClient(): OkHttpClient {
         val loggingInterceptor = HttpLoggingInterceptor()
         loggingInterceptor.level =
-                if (BuildConfig.DEBUG)
-                    HttpLoggingInterceptor.Level.BASIC
-                else
-                    HttpLoggingInterceptor.Level.NONE
+            if (BuildConfig.DEBUG)
+                HttpLoggingInterceptor.Level.BASIC
+            else
+                HttpLoggingInterceptor.Level.NONE
         return OkHttpClient.Builder()
-                .addNetworkInterceptor(loggingInterceptor)
-                .retryOnConnectionFailure(true)
-                .build()
+            .addNetworkInterceptor(loggingInterceptor)
+            .retryOnConnectionFailure(true)
+            .build()
     }
 
     //endregion
@@ -42,11 +41,10 @@ internal object NetworkModule {
 
     @Provides
     @Singleton
-    @JvmStatic
     fun provideMoshi(): Moshi {
         return Moshi.Builder()
-                .add(KotlinJsonAdapterFactory())
-                .build()
+            .add(KotlinJsonAdapterFactory())
+            .build()
     }
 
 }

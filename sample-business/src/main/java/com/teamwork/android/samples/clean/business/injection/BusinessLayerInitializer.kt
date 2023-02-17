@@ -6,6 +6,7 @@ import android.content.Context
 import com.teamwork.android.samples.clean.business.internal.InternalInteractor
 import com.teamwork.android.samples.clean.data.access.DataAccessComponent
 import com.teamwork.android.samples.clean.data.access.feature1.Entity1Repo
+import dagger.hilt.EntryPoints
 import javax.inject.Inject
 
 /**
@@ -18,13 +19,20 @@ internal class BusinessLayerInitializer {
 
     @Inject
     lateinit var dataAccessDependency: Entity1Repo
+
     @Inject
     lateinit var businessInternalDependency: InternalInteractor
 
     fun initialize(appContext: Context) {
-        val dataAccessComponent = DataAccessComponent.INSTANCE
-        val businessComponent = DaggerInternalBusinessComponent.factory()
-                .create(appContext, dataAccessComponent)
+        // val dataAccessComponent = DataAccessComponent.INSTANCE
+        val businessComponent = DaggerInternalBusinessComponent
+            .factory()
+            .create(
+                appContext, EntryPoints.get(
+                    appContext,
+                    DataAccessComponent::class.java
+                )
+            )
         InternalBusinessComponent.INSTANCE = businessComponent
     }
 

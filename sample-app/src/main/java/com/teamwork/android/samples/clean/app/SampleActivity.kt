@@ -5,6 +5,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.teamwork.android.samples.clean.app.databinding.ActivitySampleBinding
+import com.teamwork.android.samples.clean.app.feature2.detail.Feature2DetailsPresenter
 import com.teamwork.android.samples.clean.feature1.detail.Feature1DetailsPresenter
 import com.teamwork.android.samples.clean.feature1.detail.Feature1DetailsView
 import com.teamwork.android.samples.clean.feature1.list.Feature1ListPresenter
@@ -20,6 +21,10 @@ class SampleActivity : AppCompatActivity(), Feature1ListView, Feature1DetailsVie
 
     @Inject
     lateinit var detailsPresenter: Feature1DetailsPresenter
+
+    @Inject
+    @Suppress("unused")
+    lateinit var details2Presenter: Feature2DetailsPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
