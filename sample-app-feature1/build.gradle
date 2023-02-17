@@ -1,11 +1,10 @@
-// apply plugin: 'com.android.feature' // use this instead of 'com.android.library' for Instant App
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
 
 android {
     compileSdkVersion project.ext.sharedCompileSdkVersion
-    buildToolsVersion project.ext.sharedBuildToolsVersion
 
     kotlinOptions {
         jvmTarget = '1.8'
@@ -23,7 +22,6 @@ android {
     buildTypes {
         debug {
             minifyEnabled false
-            multiDexEnabled true
         }
 
         release {
@@ -55,8 +53,6 @@ dependencies {
     androidTestImplementation "androidx.test:runner:${versions.androidx.test}"
     androidTestImplementation "androidx.test:rules:${versions.androidx.test}"
     androidTestImplementation "androidx.test.ext:junit:${versions.androidx.testExt}"
-    androidTestImplementation "androidx.test.espresso:espresso-core:${versions.androidx.espressoCore}"
     androidTestImplementation "junit:junit:${versions.junit}"
-    androidTestImplementation "org.mockito:mockito-android:${versions.mockito}"
 
 }

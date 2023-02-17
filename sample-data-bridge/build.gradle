@@ -1,9 +1,10 @@
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
 
 android {
     compileSdkVersion project.ext.sharedCompileSdkVersion
-    buildToolsVersion project.ext.sharedBuildToolsVersion
 
     kotlinOptions {
         jvmTarget = '1.8'
@@ -21,7 +22,6 @@ android {
     buildTypes {
         debug {
             minifyEnabled false
-            multiDexEnabled true
         }
         release {
             minifyEnabled false
@@ -35,8 +35,6 @@ android {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}"
-
 
     // internal dependencies
 
