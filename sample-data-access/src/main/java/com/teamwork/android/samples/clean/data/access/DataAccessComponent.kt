@@ -16,27 +16,9 @@ import dagger.hilt.components.SingletonComponent
 interface DataAccessComponent {
 
     companion object {
-        /**
-         * The singleton instance for [DataAccessComponent].
-         * This is initialised by the `data-bridge` module and used by the `business` layer.
-         * The instance can be replaced with a mock for testing when necessary.
-         */
-        @Volatile
-        @JvmStatic
-        lateinit var INSTANCE: DataAccessComponent // FIXME: remove?
 
         const val GLOBAL_COMPUTATION_EXECUTOR = "computation_executor"
         const val GLOBAL_IO_EXECUTOR = "IO_executor"
     }
-
-//    fun entity1Repo(): Entity1Repo
-//
-//    fun entity2Repo(): Entity2Repo
-
-//    @Named(GLOBAL_IO_EXECUTOR)
-//    fun ioExecutor(): ExecutorService
-//
-//    @Named(GLOBAL_COMPUTATION_EXECUTOR)
-//    fun computationExecutor(): ExecutorService
 
 }

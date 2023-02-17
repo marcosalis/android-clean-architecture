@@ -4,22 +4,18 @@ package com.teamwork.android.samples.clean.business
 
 import android.app.Application
 import androidx.annotation.CallSuper
-
 import com.teamwork.android.samples.clean.business.injection.BusinessComponent
-import com.teamwork.android.samples.clean.business.injection.BusinessLayerInitializer
-import com.teamwork.android.samples.clean.business.injection.InternalBusinessComponent
+import dagger.hilt.EntryPoints
 
 /**
  * Contains business layer specific initialization for the main sample [Application] concrete class.
  */
 abstract class SampleBusinessApplication : Application() {
 
-    private lateinit var businessLayerInitializer: BusinessLayerInitializer
-
     //endregion
 
     protected val businessComponent: BusinessComponent
-        get() = InternalBusinessComponent.INSTANCE
+            by lazy { EntryPoints.get(this, BusinessComponent::class.java) }
 
     override fun onCreate() {
         super.onCreate()
@@ -35,22 +31,13 @@ abstract class SampleBusinessApplication : Application() {
     //region initialize global dependency injection
 
     protected fun initializeGlobalDependencyManagement() {
-        //initializeDataComponent()
-        //val businessComponent = initializeBusinessComponent()
-        //initializeAppComponent(businessComponent)
-
+        // TODO: we can probably remove this
         onDependencyManagementInitialized()
     }
 
     protected abstract fun initializeAppComponent(businessComponent: BusinessComponent)
 
     protected abstract fun initializeDataComponent()
-
-    private fun initializeBusinessComponent(): BusinessComponent {
-        businessLayerInitializer = BusinessLayerInitializer()
-        // businessLayerInitializer.initialize(this)
-        return businessComponent
-    }
 
     /**
      * Initialize any network-related component, such as network API containers, OkHttp and any web sockets.
@@ -63,7 +50,6 @@ abstract class SampleBusinessApplication : Application() {
     protected abstract fun initializeCacheLayer()
 
     protected fun initializeBusinessLayer() {
-        // businessLayerInitializer.initializeBusinessLayer(this)
     }
 
     @CallSuper
