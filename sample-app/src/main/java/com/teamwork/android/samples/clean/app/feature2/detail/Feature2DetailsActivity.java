@@ -1,12 +1,16 @@
 package com.teamwork.android.samples.clean.app.feature2.detail;
 
 import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.teamwork.android.samples.clean.app.R;
-import com.teamwork.android.samples.clean.app.SampleApplication;
 
 import javax.inject.Inject;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class Feature2DetailsActivity extends AppCompatActivity implements Feature2DetailsView {
 
     @Inject
@@ -15,8 +19,6 @@ public class Feature2DetailsActivity extends AppCompatActivity implements Featur
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        SampleApplication.Companion.getAppComponent().inject(this);
 
         setContentView(R.layout.activity_feature2_details);
         presenter.onViewCreated(this);

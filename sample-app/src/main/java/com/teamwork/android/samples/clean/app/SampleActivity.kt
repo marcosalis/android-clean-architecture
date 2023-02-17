@@ -9,8 +9,10 @@ import com.teamwork.android.samples.clean.feature1.detail.Feature1DetailsPresent
 import com.teamwork.android.samples.clean.feature1.detail.Feature1DetailsView
 import com.teamwork.android.samples.clean.feature1.list.Feature1ListPresenter
 import com.teamwork.android.samples.clean.feature1.list.Feature1ListView
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class SampleActivity : AppCompatActivity(), Feature1ListView, Feature1DetailsView {
 
     @Inject
@@ -21,8 +23,6 @@ class SampleActivity : AppCompatActivity(), Feature1ListView, Feature1DetailsVie
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        SampleApplication.appComponent.inject(this)
 
         val binding = ActivitySampleBinding.inflate(layoutInflater)
         val view = binding.root
