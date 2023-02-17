@@ -67,6 +67,7 @@ dependencies {
     implementation "com.google.dagger:hilt-android:${versions.dagger}"
     kapt "com.google.dagger:hilt-compiler:${versions.dagger}"
 
+    implementation("com.jakewharton.timber:timber:${versions.timber}")
 
     // unit test dependencies
     testImplementation "junit:junit:${versions.junit}"

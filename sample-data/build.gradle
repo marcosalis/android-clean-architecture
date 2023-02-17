@@ -67,6 +67,8 @@ dependencies {
     implementation "com.squareup.moshi:moshi:${versions.moshi}"
     implementation "com.squareup.moshi:moshi-kotlin:${versions.moshi}"
 
+    implementation("com.jakewharton.timber:timber:${versions.timber}")
+
 
     // unit test dependencies
     testImplementation "junit:junit:${versions.junit}"

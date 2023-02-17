@@ -53,6 +53,8 @@ dependencies {
     api "com.google.android.material:material:${versions.androidx.material}"
     implementation "androidx.constraintlayout:constraintlayout:${versions.androidx.constraintLayout}"
 
+    implementation("com.jakewharton.timber:timber:${versions.timber}")
+
 
     // unit test dependencies
     testImplementation "junit:junit:${versions.junit}"
