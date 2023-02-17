@@ -10,6 +10,7 @@ import com.teamwork.android.samples.clean.entity.feature1.Entity1
 import com.teamwork.android.samples.clean.entity.feature1.Entity1List
 import dagger.hilt.android.qualifiers.ApplicationContext
 import okhttp3.OkHttpClient
+import timber.log.Timber
 import javax.annotation.concurrent.ThreadSafe
 import javax.inject.Inject
 
@@ -21,6 +22,10 @@ class Entity1RepoImpl
     val okHttpClient: OkHttpClient,
     val moshi: Moshi
 ) : Entity1Repo {
+
+    init {
+        Timber.i("Initializing '${Entity1RepoImpl::class.simpleName}'")
+    }
 
     override fun initialize() {} // does initialization stuff!
 

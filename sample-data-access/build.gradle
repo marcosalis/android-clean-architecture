@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -44,6 +45,9 @@ dependencies {
     // third party dependencies
     api "androidx.annotation:annotation:${versions.androidx.annotation}"
 
+    // Dagger/Hilt for Dependency Injection
+    implementation "com.google.dagger:hilt-android:${versions.dagger}"
+    kapt "com.google.dagger:hilt-compiler:${versions.dagger}"
 
     // unit test dependencies
     testImplementation "junit:junit:${versions.junit}"
