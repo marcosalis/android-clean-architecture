@@ -1,20 +1,14 @@
 package com.teamwork.android.samples.clean.business.injection
 
-import android.content.Context
 import com.teamwork.android.samples.clean.business.feature1.detail.Feature1DetailsInteractor
 import com.teamwork.android.samples.clean.business.feature1.list.Feature1ListInteractor
 import com.teamwork.android.samples.clean.business.feature2.detail.Feature2DetailsInteractor
-import com.teamwork.android.samples.clean.business.injection.module.internal.InteractorsBindingModule
 import com.teamwork.android.samples.clean.data.access.DataAccessComponent
-import dagger.BindsInstance
-import dagger.Component
 import dagger.hilt.EntryPoint
 import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import java.util.concurrent.ExecutorService
 import javax.inject.Named
-import javax.inject.Singleton
 
 @EntryPoint
 @InstallIn(SingletonComponent::class)
@@ -41,19 +35,18 @@ interface BusinessComponent {
     @Named(GLOBAL_COMPUTATION_EXECUTOR)
     fun computationExecutor(): ExecutorService
 
+    // internal fun inject(businessLayerInitializer: BusinessLayerInitializer)
+
     //endregion
 
 }
 
-@Singleton
-@Component(
-    modules = [
-        InteractorsBindingModule::class
-    ],
-    dependencies = [
-        DataAccessComponent::class
-    ]
-)
+//@Singleton
+//@Component(
+//    dependencies = [
+//        DataAccessComponent::class
+//    ]
+//)
 internal interface InternalBusinessComponent : BusinessComponent {
 
     companion object {
@@ -64,16 +57,16 @@ internal interface InternalBusinessComponent : BusinessComponent {
          */
         @Volatile
         @JvmStatic
-        lateinit var INSTANCE: InternalBusinessComponent
+        lateinit var INSTANCE: BusinessComponent
     }
 
-    @Component.Factory
-    interface Factory {
-        fun create(
-            @ApplicationContext @BindsInstance applicationContext: Context,
-            dataAccessComponent: DataAccessComponent
-        ): InternalBusinessComponent
-    }
+//    @Component.Factory
+//    interface Factory {
+//        fun create(
+//            @ApplicationContext @BindsInstance applicationContext: Context,
+//            dataAccessComponent: DataAccessComponent
+//        ): InternalBusinessComponent
+//    }
 
     //region `data` layer injectable classes
 

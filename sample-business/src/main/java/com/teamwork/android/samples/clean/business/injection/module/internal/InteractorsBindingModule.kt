@@ -32,6 +32,7 @@ internal interface InteractorsBindingModule {
     fun feature1DetailsInteractor(impl: Feature1DetailsInteractorImpl): Feature1DetailsInteractor
 
     @Binds
+    @Singleton
     fun feature1ListInteractor(impl: Feature1ListInteractorImpl): Feature1ListInteractor
 
     @Binds

@@ -8,6 +8,7 @@ import com.teamwork.android.samples.clean.business.injection.BusinessComponent
 import com.teamwork.android.samples.clean.core.BasePresenter
 import com.teamwork.android.samples.clean.entity.feature2.Entity2
 import dagger.hilt.android.qualifiers.ApplicationContext
+import timber.log.Timber
 import java.util.concurrent.ExecutorService
 import javax.inject.Inject
 import javax.inject.Named
@@ -24,6 +25,10 @@ class Feature2DetailsPresenter @Inject constructor(
     // private val internalInteractor: InternalInteractor // this (and rightly so) doesn't even compile!
 ) : BasePresenter<Feature2DetailsView>(), Interactor.Callback<Entity2> {
 
+    init {
+        Timber.i("Initializing '${Feature2DetailsPresenter::class.simpleName}'")
+    }
+
     override fun onViewCreated(view: Feature2DetailsView) {
         super.onViewCreated(view)
         interactor.registerCallback(this)
@@ -39,8 +44,6 @@ class Feature2DetailsPresenter @Inject constructor(
     }
 
     override fun onDataLoadError(exception: Exception) {
-        // just an example of @ApplicationContext usage
-        // appContext.getString(android.R.string.ok)
     }
 
 }

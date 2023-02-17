@@ -35,9 +35,9 @@ abstract class SampleBusinessApplication : Application() {
     //region initialize global dependency injection
 
     protected fun initializeGlobalDependencyManagement() {
-        initializeDataComponent()
-        val businessComponent = initializeBusinessComponent()
-        initializeAppComponent(businessComponent)
+        //initializeDataComponent()
+        //val businessComponent = initializeBusinessComponent()
+        //initializeAppComponent(businessComponent)
 
         onDependencyManagementInitialized()
     }
@@ -48,7 +48,7 @@ abstract class SampleBusinessApplication : Application() {
 
     private fun initializeBusinessComponent(): BusinessComponent {
         businessLayerInitializer = BusinessLayerInitializer()
-        businessLayerInitializer.initialize(this)
+        // businessLayerInitializer.initialize(this)
         return businessComponent
     }
 
@@ -63,7 +63,7 @@ abstract class SampleBusinessApplication : Application() {
     protected abstract fun initializeCacheLayer()
 
     protected fun initializeBusinessLayer() {
-        businessLayerInitializer.initializeBusinessLayer(this)
+        // businessLayerInitializer.initializeBusinessLayer(this)
     }
 
     @CallSuper

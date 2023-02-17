@@ -22,7 +22,7 @@ class Entity2RepoImpl
 ) : Entity2Repo {
 
     init {
-        Timber.i("Initializing '${Entity2RepoImpl::class.simpleName}'")
+        Timber.i("Initializing '${Entity2RepoImpl::class.simpleName}' (singleton)")
     }
 
     override fun getEntity2(id: Long): DataRequest<Entity2> {

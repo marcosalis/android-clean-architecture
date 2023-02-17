@@ -24,7 +24,7 @@ class Entity1RepoImpl
 ) : Entity1Repo {
 
     init {
-        Timber.i("Initializing '${Entity1RepoImpl::class.simpleName}'")
+        Timber.i("Initializing '${Entity1RepoImpl::class.simpleName}' (singleton)")
     }
 
     override fun initialize() {} // does initialization stuff!

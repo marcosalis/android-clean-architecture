@@ -4,7 +4,6 @@ package com.teamwork.android.samples.clean.business.injection
 
 import android.content.Context
 import com.teamwork.android.samples.clean.business.internal.InternalInteractor
-import com.teamwork.android.samples.clean.data.access.DataAccessComponent
 import com.teamwork.android.samples.clean.data.access.feature1.Entity1Repo
 import dagger.hilt.EntryPoints
 import javax.inject.Inject
@@ -24,20 +23,15 @@ internal class BusinessLayerInitializer {
     lateinit var businessInternalDependency: InternalInteractor
 
     fun initialize(appContext: Context) {
-        // val dataAccessComponent = DataAccessComponent.INSTANCE
-        val businessComponent = DaggerInternalBusinessComponent
-            .factory()
-            .create(
-                appContext, EntryPoints.get(
-                    appContext,
-                    DataAccessComponent::class.java
-                )
-            )
+        val businessComponent = EntryPoints.get(
+            appContext,
+            BusinessComponent::class.java
+        )
         InternalBusinessComponent.INSTANCE = businessComponent
     }
 
     fun initializeBusinessLayer(appContext: Context) {
-        InternalBusinessComponent.INSTANCE.inject(this)
+        // InternalBusinessComponent.INSTANCE.inject(this)
 
         dataAccessDependency.initialize()
         businessInternalDependency.initialize()

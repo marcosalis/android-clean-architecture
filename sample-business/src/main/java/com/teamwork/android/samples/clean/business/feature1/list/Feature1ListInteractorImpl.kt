@@ -20,7 +20,7 @@ internal class Feature1ListInteractorImpl @Inject constructor(
 ) : BaseInteractor<Entity1List, Interactor.Callback<Entity1List>>(), Feature1ListInteractor {
 
     init {
-        Timber.i("Initializing '${Feature1ListInteractorImpl::class.simpleName}'")
+        Timber.i("Initializing '${Feature1ListInteractorImpl::class.simpleName}' (singleton)")
     }
 
 }

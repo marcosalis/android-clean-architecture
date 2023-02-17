@@ -1,10 +1,7 @@
 package com.teamwork.android.samples.clean.app.injection
 
-import android.content.Context
 import com.teamwork.android.samples.clean.business.injection.BusinessComponent
-import dagger.BindsInstance
 import dagger.Component
-import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Singleton
 
 @Singleton
@@ -26,17 +23,17 @@ interface ApplicationComponent {
         lateinit var INSTANCE: ApplicationComponent
     }
 
-    @Component.Builder
-    interface Builder {
-
-        @BindsInstance
-        @ApplicationContext
-        fun appContext(applicationContext: Context): Builder
-
-        fun businessComponent(businessComponent: BusinessComponent): Builder
-
-        fun build(): ApplicationComponent
-
-    }
+//    @Component.Builder
+//    interface Builder {
+//
+//        @BindsInstance
+//        @ApplicationContext
+//        fun appContext(applicationContext: Context): Builder
+//
+//        fun businessComponent(businessComponent: BusinessComponent): Builder
+//
+//        fun build(): ApplicationComponent
+//
+//    }
 
 }
