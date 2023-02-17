@@ -5,6 +5,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import timber.log.Timber
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import javax.inject.Named
@@ -24,11 +25,15 @@ internal object ThreadingModule {
     @Named(DataAccessComponent.GLOBAL_COMPUTATION_EXECUTOR)
     fun computationExecutorService(): ExecutorService =
         // note: this thread pool sizing isn't reliable, it's just provided as an example
-        Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors())
+        Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors()).also {
+            Timber.i("Initializing computation '${ExecutorService::class.simpleName}' (singleton)")
+        }
 
     @Provides
     @Singleton
     @Named(DataAccessComponent.GLOBAL_IO_EXECUTOR)
-    fun ioExecutorService(): ExecutorService = Executors.newCachedThreadPool()
+    fun ioExecutorService(): ExecutorService = Executors.newCachedThreadPool().also {
+        Timber.i("Initializing IO '${ExecutorService::class.simpleName}' (singleton)")
+    }
 
 }

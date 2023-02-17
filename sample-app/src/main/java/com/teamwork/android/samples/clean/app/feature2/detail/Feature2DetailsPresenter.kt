@@ -13,11 +13,15 @@ import java.util.concurrent.ExecutorService
 import javax.inject.Inject
 import javax.inject.Named
 
+@Suppress("unused")
 class Feature2DetailsPresenter @Inject constructor(
     private val interactor: Feature2DetailsInteractor,
-    @Suppress("unused") private val interactorList: Feature1ListInteractor,
+    private val interactorList: Feature1ListInteractor,
 
-    @Suppress("unused") @ApplicationContext private val appContext: Context,
+    @ApplicationContext private val appContext: Context,
+
+    @Named(BusinessComponent.GLOBAL_IO_EXECUTOR)
+    private val ioExecutor: ExecutorService,
 
     @Named(BusinessComponent.GLOBAL_COMPUTATION_EXECUTOR)
     private val computationExecutor: ExecutorService

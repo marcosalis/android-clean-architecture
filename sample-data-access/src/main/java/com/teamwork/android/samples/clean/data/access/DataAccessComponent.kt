@@ -1,12 +1,8 @@
 package com.teamwork.android.samples.clean.data.access
 
-import com.teamwork.android.samples.clean.data.access.feature1.Entity1Repo
-import com.teamwork.android.samples.clean.data.access.feature2.Entity2Repo
 import dagger.hilt.EntryPoint
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import java.util.concurrent.ExecutorService
-import javax.inject.Named
 
 /**
  * Interface that lists all public 'data access' layer components which need to be exposed to the `business` layer.
@@ -33,14 +29,14 @@ interface DataAccessComponent {
         const val GLOBAL_IO_EXECUTOR = "IO_executor"
     }
 
-    fun entity1Repo(): Entity1Repo
+//    fun entity1Repo(): Entity1Repo
+//
+//    fun entity2Repo(): Entity2Repo
 
-    fun entity2Repo(): Entity2Repo
-
-    @Named(GLOBAL_IO_EXECUTOR)
-    fun ioExecutor(): ExecutorService
-
-    @Named(GLOBAL_COMPUTATION_EXECUTOR)
-    fun computationExecutor(): ExecutorService
+//    @Named(GLOBAL_IO_EXECUTOR)
+//    fun ioExecutor(): ExecutorService
+//
+//    @Named(GLOBAL_COMPUTATION_EXECUTOR)
+//    fun computationExecutor(): ExecutorService
 
 }

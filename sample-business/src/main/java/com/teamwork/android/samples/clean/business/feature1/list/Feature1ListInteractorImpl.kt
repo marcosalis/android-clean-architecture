@@ -15,6 +15,9 @@ import javax.inject.Named
 internal class Feature1ListInteractorImpl @Inject constructor(
     private val entity1Repo: Entity1Repo,
 
+    @Named(DataAccessComponent.GLOBAL_IO_EXECUTOR)
+    private val ioExecutor: ExecutorService,
+
     @Named(DataAccessComponent.GLOBAL_COMPUTATION_EXECUTOR)
     private val computationExecutor: ExecutorService
 ) : BaseInteractor<Entity1List, Interactor.Callback<Entity1List>>(), Feature1ListInteractor {
