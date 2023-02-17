@@ -10,12 +10,12 @@ import javax.inject.Inject
 import javax.inject.Named
 
 class Feature2DetailsPresenter @Inject constructor(
-        private val interactor: Feature2DetailsInteractor,
+    private val interactor: Feature2DetailsInteractor,
 
         @Named(BusinessComponent.GLOBAL_COMPUTATION_EXECUTOR)
         private val computationExecutor: ExecutorService
 
-        // private val internalInteractor: InternalInteractor // this (and rightly so) doesn't even compile!
+    // private val internalInteractor: InternalInteractor // this (and rightly so) doesn't even compile!
 ) : BasePresenter<Feature2DetailsView>(), Interactor.Callback<Entity2> {
 
     override fun onViewCreated(view: Feature2DetailsView) {
@@ -33,7 +33,8 @@ class Feature2DetailsPresenter @Inject constructor(
     }
 
     override fun onDataLoadError(exception: Exception) {
-        TODO("not implemented")
+        // just an example of @ApplicationContext usage
+        // appContext.getString(android.R.string.ok)
     }
 
 }

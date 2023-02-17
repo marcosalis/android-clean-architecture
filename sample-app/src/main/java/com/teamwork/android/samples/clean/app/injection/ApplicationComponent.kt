@@ -1,21 +1,25 @@
 package com.teamwork.android.samples.clean.app.injection
 
-import android.content.Context
 import com.teamwork.android.samples.clean.app.SampleActivity
 import com.teamwork.android.samples.clean.app.feature2.detail.Feature2DetailsActivity
 import com.teamwork.android.samples.clean.business.injection.BusinessComponent
-import dagger.BindsInstance
 import dagger.Component
+import dagger.hilt.EntryPoint
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 @Singleton
 @Component(
-        modules = [],
-        dependencies = [
-            BusinessComponent::class
-        ]
+    dependencies = [
+        BusinessComponent::class
+    ]
 )
 interface ApplicationComponent {
+
+    @EntryPoint
+    @InstallIn(SingletonComponent::class)
+    interface AggregatorEntryPoint : ApplicationComponent
 
     companion object {
         /**
@@ -28,12 +32,12 @@ interface ApplicationComponent {
         lateinit var INSTANCE: ApplicationComponent
     }
 
-    @Component.Factory
-    interface Factory {
-        fun create(
-                @BindsInstance applicationContext: Context,
-                businessComponent: BusinessComponent
-        ): ApplicationComponent
+    @Component.Builder
+    interface Builder {
+
+        fun businessComponent(businessComponent: BusinessComponent): Builder
+
+        fun build(): ApplicationComponent
 
     }
 

@@ -8,10 +8,15 @@ import com.teamwork.android.samples.clean.business.injection.module.internal.Int
 import com.teamwork.android.samples.clean.data.access.DataAccessComponent
 import dagger.BindsInstance
 import dagger.Component
+import dagger.hilt.EntryPoint
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import java.util.concurrent.ExecutorService
 import javax.inject.Named
 import javax.inject.Singleton
 
+@EntryPoint
+@InstallIn(SingletonComponent::class)
 interface BusinessComponent {
 
     companion object {
@@ -68,6 +73,7 @@ internal interface InternalBusinessComponent : BusinessComponent {
         ): InternalBusinessComponent
     }
 
+    fun appContext(): Context
 
     //region `data` layer injectable classes
 

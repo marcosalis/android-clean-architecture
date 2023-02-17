@@ -16,6 +16,7 @@ import com.teamwork.android.samples.data.bridge.DataBridgeInitializer
  * Don't use for lengthy unnecessary initializations, as anything executed here on the main thread will delay the
  * application startup and UI.
  */
+// @HiltAndroidApp
 class SampleApplication : SampleBusinessApplication() {
 
     override fun onCreate() {
@@ -46,7 +47,9 @@ class SampleApplication : SampleBusinessApplication() {
     }
 
     private fun buildAppComponent(businessComponent: BusinessComponent): ApplicationComponent {
-        return DaggerApplicationComponent.factory().create(this, businessComponent)
+        return DaggerApplicationComponent.builder()
+            .businessComponent(businessComponent)
+            .build()
     }
 
     companion object {
