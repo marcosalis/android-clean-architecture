@@ -37,8 +37,6 @@ android {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}"
-
 
     // internal dependencies
     api project(':sample-business')
