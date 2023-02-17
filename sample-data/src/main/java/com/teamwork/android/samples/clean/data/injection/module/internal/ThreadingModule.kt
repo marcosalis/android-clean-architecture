@@ -3,7 +3,8 @@ package com.teamwork.android.samples.clean.data.injection.module.internal
 import com.teamwork.android.samples.clean.data.access.DataAccessComponent
 import dagger.Module
 import dagger.Provides
-import dagger.hilt.migration.DisableInstallInCheck
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import javax.inject.Named
@@ -15,7 +16,7 @@ import javax.inject.Singleton
  * This could also include custom RxJava `Scheduler`s or any other global, cross-layer threading dependency.
  */
 @Module
-@DisableInstallInCheck
+@InstallIn(SingletonComponent::class)
 internal object ThreadingModule {
 
     @Provides
