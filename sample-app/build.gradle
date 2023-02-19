@@ -56,7 +56,7 @@ dependencies {
 
     implementation project(':sample-app-core')
     implementation project(':sample-app-feature1')
-    implementation project(':sample-data-bridge') // for initialization only
+    implementation project(':sample-app:sample-data-bridge') // for initialization only
 
 
     // third party dependencies

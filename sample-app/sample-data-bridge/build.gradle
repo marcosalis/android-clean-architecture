@@ -42,7 +42,4 @@ dependencies {
     implementation project(':sample-data-access')
     implementation project(':sample-data')
 
-
-    // unit test dependencies
-    testImplementation "junit:junit:${versions.junit}"
 }

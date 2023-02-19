@@ -13,4 +13,4 @@ dependencyResolutionManagement {
     }
 }
 
-include ':sample-app', ':sample-app-core', ':sample-app-feature1', ':sample-business', ':sample-data-bridge', ':sample-data', ':sample-data-access', ':sample-entity'
+include ':sample-app', ':sample-app:sample-data-bridge', ':sample-app-core', ':sample-app-feature1', ':sample-business', ':sample-data', ':sample-data-access', ':sample-entity'

@@ -14,10 +14,10 @@
             <option value="$PROJECT_DIR$/sample-app" />
             <option value="$PROJECT_DIR$/sample-app-core" />
             <option value="$PROJECT_DIR$/sample-app-feature1" />
+            <option value="$PROJECT_DIR$/sample-app/sample-data-bridge" />
             <option value="$PROJECT_DIR$/sample-business" />
             <option value="$PROJECT_DIR$/sample-data" />
             <option value="$PROJECT_DIR$/sample-data-access" />
-            <option value="$PROJECT_DIR$/sample-data-bridge" />
             <option value="$PROJECT_DIR$/sample-entity" />
           </set>
         </option>
