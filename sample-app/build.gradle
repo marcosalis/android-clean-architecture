@@ -1,11 +1,15 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+}
 
 android {
     compileSdkVersion project.ext.sharedCompileSdkVersion
-    buildToolsVersion project.ext.sharedBuildToolsVersion
+
+    buildFeatures {
+        viewBinding = true
+    }
 
     kotlinOptions {
         jvmTarget = '1.8'
@@ -24,7 +28,6 @@ android {
 
     buildTypes {
         debug {
-            multiDexEnabled true
         }
         release {
             minifyEnabled false
@@ -39,8 +42,6 @@ android {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}"
-
 
     // internal dependencies
 
@@ -66,8 +67,6 @@ dependencies {
     androidTestImplementation "androidx.test:runner:${versions.androidx.test}"
     androidTestImplementation "androidx.test:rules:${versions.androidx.test}"
     androidTestImplementation "androidx.test.ext:junit:${versions.androidx.testExt}"
-    androidTestImplementation "androidx.test.espresso:espresso-core:${versions.androidx.espressoCore}"
     androidTestImplementation "junit:junit:${versions.junit}"
-    androidTestImplementation "org.mockito:mockito-android:${versions.mockito}"
 
 }

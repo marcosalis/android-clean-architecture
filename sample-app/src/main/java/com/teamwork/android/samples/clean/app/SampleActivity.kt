@@ -4,11 +4,11 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import com.teamwork.android.samples.clean.app.databinding.ActivitySampleBinding
 import com.teamwork.android.samples.clean.feature1.detail.Feature1DetailsPresenter
 import com.teamwork.android.samples.clean.feature1.detail.Feature1DetailsView
 import com.teamwork.android.samples.clean.feature1.list.Feature1ListPresenter
 import com.teamwork.android.samples.clean.feature1.list.Feature1ListView
-import kotlinx.android.synthetic.main.activity_sample.*
 import javax.inject.Inject
 
 class SampleActivity : AppCompatActivity(), Feature1ListView, Feature1DetailsView {
@@ -24,8 +24,12 @@ class SampleActivity : AppCompatActivity(), Feature1ListView, Feature1DetailsVie
 
         SampleApplication.appComponent.inject(this)
 
+        val binding = ActivitySampleBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
+
         setContentView(R.layout.activity_sample)
-        setSupportActionBar(toolbar)
+        setSupportActionBar(binding.toolbar)
 
         presenter.onViewCreated(this)
         detailsPresenter.onViewCreated(this)
