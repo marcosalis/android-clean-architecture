@@ -3,27 +3,32 @@ package com.teamwork.android.samples.clean.app
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.teamwork.android.samples.clean.app.databinding.ActivitySampleBinding
 import com.teamwork.android.samples.clean.app.feature2.detail.Feature2DetailsPresenter
-import com.teamwork.android.samples.clean.feature1.detail.Feature1DetailsPresenter
 import com.teamwork.android.samples.clean.feature1.detail.Feature1DetailsView
+import com.teamwork.android.samples.clean.feature1.detail.Feature1DetailsViewModel
 import com.teamwork.android.samples.clean.feature1.list.Feature1ListPresenter
 import com.teamwork.android.samples.clean.feature1.list.Feature1ListView
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
+@Suppress("unused")
 class SampleActivity : AppCompatActivity(), Feature1ListView, Feature1DetailsView {
+
+    /*
+     * Note: in general, a real world app wouldn't use a mix of `ViewModel` and `Presenter`
+     * dependencies. This is only done for showing the D.I. approach with Hilt on both components.
+     */
+
+    private val exampleViewModel: Feature1DetailsViewModel by viewModels()
 
     @Inject
     lateinit var presenter: Feature1ListPresenter
 
     @Inject
-    lateinit var detailsPresenter: Feature1DetailsPresenter
-
-    @Inject
-    @Suppress("unused")
     lateinit var details2Presenter: Feature2DetailsPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,25 +42,19 @@ class SampleActivity : AppCompatActivity(), Feature1ListView, Feature1DetailsVie
         setSupportActionBar(binding.toolbar)
 
         presenter.onViewCreated(this)
-        detailsPresenter.onViewCreated(this)
     }
 
     override fun onDestroy() {
         super.onDestroy()
         presenter.onViewDestroyed()
-        detailsPresenter.onViewDestroyed()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_sample, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
             R.id.action_settings -> true
             else -> super.onOptionsItemSelected(item)

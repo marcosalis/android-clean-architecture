@@ -8,6 +8,7 @@ import com.teamwork.android.samples.clean.entity.BusinessEntity
  * loading and storage. It contains all application-specific business rules and logic and is completely unaware of the
  * presentation and data layer implementation details.
  *
+ * TODO: use a more modern `kotlin.Result` (or Flow) with coroutines approach instead of callbacks.
  */
 @MainThread
 interface Interactor<T : BusinessEntity, C : Interactor.Callback<T>> {
