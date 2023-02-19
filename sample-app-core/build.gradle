@@ -52,6 +52,8 @@ dependencies {
     api "androidx.appcompat:appcompat:${versions.androidx.appCompat}"
     api "com.google.android.material:material:${versions.androidx.material}"
     implementation "androidx.constraintlayout:constraintlayout:${versions.androidx.constraintLayout}"
+    implementation("androidx.core:core-ktx:${versions.androidx.ktx}")
+    implementation("androidx.fragment:fragment-ktx:${versions.androidx.fragmentKtx}")
 
     implementation("com.jakewharton.timber:timber:${versions.timber}")
 
@@ -60,7 +62,7 @@ dependencies {
     testImplementation "junit:junit:${versions.junit}"
 
     // android instrumentation test dependencies
-    androidTestImplementation "androidx.test:runner:${versions.androidx.test}"
+    androidTestImplementation "androidx.test:runner:${versions.androidx.testRunner}"
     androidTestImplementation "androidx.test:rules:${versions.androidx.test}"
     androidTestImplementation "androidx.test.ext:junit:${versions.androidx.testExt}"
     androidTestImplementation "junit:junit:${versions.junit}"

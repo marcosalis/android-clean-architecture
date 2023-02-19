@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
 }
 
 android {
@@ -41,14 +43,21 @@ dependencies {
     // internal dependencies
     implementation project(':sample-app-core')
 
+    // Dagger/Hilt for Dependency Injection
+    implementation "com.google.dagger:hilt-android:${versions.dagger}"
+    kapt "com.google.dagger:hilt-compiler:${versions.dagger}"
+
+    implementation "androidx.constraintlayout:constraintlayout:${versions.androidx.constraintLayout}"
+    implementation("androidx.core:core-ktx:${versions.androidx.ktx}")
+    implementation("androidx.fragment:fragment-ktx:${versions.androidx.fragmentKtx}")
+
 
     // unit test dependencies
-    implementation "androidx.constraintlayout:constraintlayout:${versions.androidx.constraintLayout}"
     testImplementation "junit:junit:${versions.junit}"
 
     // android instrumentation test dependencies
     androidTestImplementation "androidx.annotation:annotation:${versions.androidx.annotation}"
-    androidTestImplementation "androidx.test:runner:${versions.androidx.test}"
+    androidTestImplementation "androidx.test:runner:${versions.androidx.testRunner}"
     androidTestImplementation "androidx.test:rules:${versions.androidx.test}"
     androidTestImplementation "androidx.test.ext:junit:${versions.androidx.testExt}"
     androidTestImplementation "junit:junit:${versions.junit}"

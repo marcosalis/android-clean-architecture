@@ -15,8 +15,8 @@ allprojects {
         sharedTargetSdkVersion = 33
         sharedBuildToolsVersion = "33.0.0"
 
-        appVersionCode = 5
-        appVersionName = "0.5"
+        appVersionCode = 300000
+        appVersionName = "3.0"
     }
 }
 
@@ -24,31 +24,34 @@ ext {
     // dependency versions (sorted alphabetically)
     versions = [
             // production dependencies
-            dagger          : '2.45',
-            jsrAnnotations  : '3.0.2',
-            moshi           : '1.9.2',
-            okhttp          : '4.10.0',
-            timber          : '5.0.1',
+            dagger        : '2.45',
+            jsrAnnotations: '3.0.2',
+            moshi         : '1.9.2',
+            okhttp        : '4.10.0',
+            timber        : '5.0.1',
 
             // AndroidX - https://developer.android.com/jetpack/androidx/versions
-            androidx          : [
-                    annotation            : '1.5.0',
-                    appCompat             : '1.6.1',
-                    constraintLayout      : '2.1.4',
-                    core                  : '1.1.0',
-                    coreUtils             : '1.0.0',
-                    fragment              : '1.0.0',
-                    material              : '1.8.0',
+            androidx      : [
+                    annotation      : '1.5.0',
+                    appCompat       : '1.6.1',
+                    constraintLayout: '2.1.4',
+                    core            : '1.1.0',
+                    coreUtils       : '1.0.0',
+                    fragment        : '1.0.0',
+                    fragmentKtx     : '1.5.5',
+                    ktx             : '1.9.0',
+                    material        : '1.8.0',
 
                     // AndroidX test dependencies
-                    test                  : '1.5.0',
-                    testExt               : '1.1.5'
+                    test            : '1.5.0',
+                    testRunner      : '1.5.2',
+                    testExt         : '1.1.5'
             ],
 
             // Test dependencies
-            espressoCore    : '3.0.2',
-            junit           : '4.13.2',
-            supportTest     : '1.0.2'
+            espressoCore  : '3.0.2',
+            junit         : '4.13.2',
+            supportTest   : '1.0.2'
     ]
 }
 

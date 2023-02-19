@@ -62,6 +62,8 @@ dependencies {
     // third party dependencies
 
     implementation "androidx.constraintlayout:constraintlayout:${versions.androidx.constraintLayout}"
+    implementation("androidx.core:core-ktx:${versions.androidx.ktx}")
+    implementation("androidx.fragment:fragment-ktx:${versions.androidx.fragmentKtx}")
 
     // Dagger/Hilt for Dependency Injection
     implementation "com.google.dagger:hilt-android:${versions.dagger}"
@@ -74,7 +76,7 @@ dependencies {
 
     // android instrumentation test dependencies
     androidTestImplementation "androidx.annotation:annotation:${versions.androidx.annotation}"
-    androidTestImplementation "androidx.test:runner:${versions.androidx.test}"
+    androidTestImplementation "androidx.test:runner:${versions.androidx.testRunner}"
     androidTestImplementation "androidx.test:rules:${versions.androidx.test}"
     androidTestImplementation "androidx.test.ext:junit:${versions.androidx.testExt}"
     androidTestImplementation "junit:junit:${versions.junit}"
