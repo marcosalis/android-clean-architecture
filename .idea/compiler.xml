@@ -8,7 +8,6 @@
       <module name="android-clean-architecture.sample-app.sample-data-bridge" target="11" />
       <module name="android-clean-architecture.sample-business" target="11" />
       <module name="android-clean-architecture.sample-data" target="11" />
-      <module name="android-clean-architecture.sample-data-access" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
