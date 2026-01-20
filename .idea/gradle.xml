@@ -10,8 +10,11 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/entity" />
+            <option value="$PROJECT_DIR$/sample-app" />
+            <option value="$PROJECT_DIR$/sample-business" />
+            <option value="$PROJECT_DIR$/sample-data" />
+            <option value="$PROJECT_DIR$/sample-data-access" />
+            <option value="$PROJECT_DIR$/sample-entity" />
           </set>
         </option>
       </GradleProjectSettings>

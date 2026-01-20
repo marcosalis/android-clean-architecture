@@ -7,12 +7,18 @@ sdk-target = "36"
 #noinspection UnusedVersionCatalogEntry
 sdk-min = "28"
 
-agp = "9.0.0"
+agp = "9.0.0" # https://developer.android.com/reference/tools/gradle-api
 # Do NOT upgrade Kotlin/KSP until Dagger releases support
 #noinspection NewerVersionAvailable
 kotlin = "2.2.21" # https://kotlinlang.org/docs/whatsnew-eap.html
 #noinspection GradleDependency
 kspVersion = "2.3.2" #  https://github.com/google/ksp/releases
+kotlinxCoroutines = "1.10.2" # https://github.com/Kotlin/kotlinx.coroutines/releases
+kotlinxSerialization = "1.9.0" # https://github.com/Kotlin/kotlinx.serialization/releases
+kotlinxDatetime = "0.7.1" # https://github.com/Kotlin/kotlinx-datetime/releases
+kotlinxImmutableCollections = "0.4.0" # https://github.com/Kotlin/kotlinx.collections.immutable/releases
+
+javaxInject = "1"
 
 androidCoreKtx = "1.17.0"
 lifecycleRuntimeKtx = "2.10.0"
@@ -25,12 +31,18 @@ material = "1.13.0"
 hilt = "2.57.2" # https://github.com/google/dagger/releases
 hiltAndroidX = "1.3.0" # https://developer.android.com/jetpack/androidx/releases/hilt
 
+# Testing
 junit = "4.13.2"
 junitVersion = "1.3.0"
 espressoCore = "3.7.0"
 
 
 [libraries]
+kotlinx-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
+kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version.ref = "kotlinxDatetime" }
+kotlinx-collections-immutable = { group = "org.jetbrains.kotlinx", name = "kotlinx-collections-immutable", version.ref = "kotlinxImmutableCollections" }
+
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidCoreKtx" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
@@ -42,7 +54,7 @@ androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "u
 androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 
-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+javax-inject = { module = "javax.inject:javax.inject", version.ref = "javaxInject" }
 
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
@@ -57,10 +69,15 @@ androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-te
 
 
 [plugins]
+jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
+
+# TODO: remove when `android.newDsl=false` is no longer necessary
+kotlin-android = { id = "org.jetbrains.kotlin.android", version = "2.3.0" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "kspVersion" }
 
+kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 
 dagger-hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }

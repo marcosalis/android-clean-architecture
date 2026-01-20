@@ -22,5 +22,8 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "Android Clean Architecture"
-include(":app")
-include(":entity")
+include(":sample-app")
+include(":sample-business")
+include(":sample-data-access")
+include(":sample-data")
+include(":sample-entity")
