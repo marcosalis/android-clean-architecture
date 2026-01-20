@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel target="1.8">
-      <module name="android-clean-architecture.sample-app" target="11" />
-      <module name="android-clean-architecture.sample-app-core" target="11" />
-      <module name="android-clean-architecture.sample-app-feature1" target="11" />
-      <module name="android-clean-architecture.sample-business" target="11" />
-      <module name="android-clean-architecture.sample-data" target="11" />
-      <module name="android-clean-architecture.sample-data-access" target="11" />
-      <module name="android-clean-architecture.sample-data-bridge" target="11" />
-    </bytecodeTargetLevel>
+    <bytecodeTargetLevel target="21" />
   </component>
 </project>
