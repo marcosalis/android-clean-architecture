@@ -14,7 +14,9 @@
             <option value="$PROJECT_DIR$/sample-business" />
             <option value="$PROJECT_DIR$/sample-data" />
             <option value="$PROJECT_DIR$/sample-data-access" />
+            <option value="$PROJECT_DIR$/sample-data/injection" />
             <option value="$PROJECT_DIR$/sample-entity" />
+            <option value="$PROJECT_DIR$/sample-ktx" />
           </set>
         </option>
       </GradleProjectSettings>

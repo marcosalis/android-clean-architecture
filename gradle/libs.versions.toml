@@ -26,6 +26,8 @@ appcompat = "1.7.1"
 hilt = "2.59" # https://github.com/google/dagger/releases
 hiltAndroidX = "1.3.0" # https://developer.android.com/jetpack/androidx/releases/hilt
 
+timber = "5.0.1" # https://github.com/JakeWharton/timber/releases
+
 # Testing
 junit = "4.13.2"
 junitVersion = "1.3.0"
@@ -55,6 +57,8 @@ hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt"
 hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
 hilt-compiler-androidx = { module = "androidx.hilt:hilt-compiler", version.ref = "hiltAndroidX" }
 hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltAndroidX" }
+
+timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }

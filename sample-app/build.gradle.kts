@@ -52,6 +52,7 @@ tasks.withType<KotlinJvmCompile>().configureEach {
 
 dependencies {
     implementation(project(":sample-business"))
+    implementation(project(":sample-data:injection")) // dependency injection propagation only
 
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.core.ktx)
@@ -70,6 +71,8 @@ dependencies {
     implementation(libs.hilt.navigation.compose)
     ksp(libs.hilt.compiler)
     ksp(libs.hilt.compiler.androidx)
+
+    implementation(libs.timber)
 
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)

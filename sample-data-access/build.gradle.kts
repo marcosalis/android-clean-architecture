@@ -5,7 +5,6 @@ plugins {
     alias(libs.plugins.android.library)
 }
 
-// TODO: replace with `androidLibrary` when `android.newDsl=false` is removed
 android {
     namespace = "dev.marcosalis.clean.data.access"
     compileSdk {

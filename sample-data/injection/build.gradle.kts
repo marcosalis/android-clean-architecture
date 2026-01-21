@@ -3,30 +3,22 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 
 plugins {
     alias(libs.plugins.android.library)
-    alias(libs.plugins.dagger.hilt.android)
-    alias(libs.plugins.ksp)
 }
 
 android {
-    namespace = "dev.marcosalis.clean.business"
+    namespace = "dev.marcosalis.clean.data.injection"
     compileSdk {
         version = release(libs.versions.sdk.compile.get().toInt())
     }
 
     defaultConfig {
         minSdk = libs.versions.sdk.min.get().toInt()
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
         }
     }
     compileOptions {
@@ -42,18 +34,6 @@ tasks.withType<KotlinJvmCompile>().configureEach {
 }
 
 dependencies {
-    api(project(":sample-entity"))
-    implementation(project(":sample-data-access"))
-
-    implementation(libs.androidx.core.ktx)
-
-    // Dagger / Hilt
-    implementation(libs.hilt.android)
-    ksp(libs.hilt.compiler)
-
-    implementation(libs.timber)
-
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    /** Connects `data` Dagger `@Module`s to the graph. See module's `README.md` for more details. */
+    implementation(project(":sample-data"))
 }

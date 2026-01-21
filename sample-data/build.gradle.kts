@@ -7,7 +7,6 @@ plugins {
     alias(libs.plugins.ksp)
 }
 
-// TODO: replace with `androidLibrary` when `android.newDsl=false` is removed
 android {
     namespace = "dev.marcosalis.clean.data"
     compileSdk {
@@ -52,6 +51,8 @@ dependencies {
     // Dagger / Hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
+
+    implementation(libs.timber)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
