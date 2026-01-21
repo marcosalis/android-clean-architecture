@@ -1,4 +1,4 @@
-package dev.marcosalis.mylibrary
+package dev.marcosalis.clean
 
 import org.junit.Assert.assertEquals
 import org.junit.Test
