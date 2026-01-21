@@ -6,10 +6,8 @@ plugins {
     alias(libs.plugins.dagger.hilt.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
-    alias(libs.plugins.kotlin.android)
 }
 
-// TODO: replace with `androidApplication` when `android.newDsl=false` is removed
 android {
     namespace = "dev.marcosalis.clean"
     compileSdk {

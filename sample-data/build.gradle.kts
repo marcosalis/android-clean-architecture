@@ -5,7 +5,6 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.dagger.hilt.android)
     alias(libs.plugins.ksp)
-    alias(libs.plugins.kotlin.android)
 }
 
 // TODO: replace with `androidLibrary` when `android.newDsl=false` is removed
