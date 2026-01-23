@@ -40,7 +40,6 @@ class Feature1ViewModel @Inject constructor(
                 initialValue = Feature1UiState(id = id, showText = false)
             )
 
-
     @Suppress("unused")
     fun onUserAction(userInput: String) {
         viewModelScope.launch {

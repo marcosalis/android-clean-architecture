@@ -1,4 +1,4 @@
-package dev.marcosalis.clean.ui.feature1
+package dev.marcosalis.clean.feature2.ui
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -8,28 +8,28 @@ import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
-import dev.marcosalis.clean.presentation.feature1.Feature1Route
-import dev.marcosalis.clean.presentation.feature1.Feature1ViewModel
+import dev.marcosalis.clean.feature2.presentation.Feature2Route
+import dev.marcosalis.clean.feature2.presentation.Feature2ViewModel
 
-fun NavController.navigateToFeature1(id: String) {
-    navigate(route = Feature1Route(id = id)) {
+fun NavController.navigateToFeature2(id: String) {
+    navigate(route = Feature2Route(id = id)) {
         popUpTo(graph.findStartDestination().id) { saveState = true }
         launchSingleTop = true
         restoreState = true
     }
 }
 
-fun NavGraphBuilder.feature1Destination() {
-    composable<Feature1Route> {
-        Feature1Entry()
+fun NavGraphBuilder.feature2Destination() {
+    composable<Feature2Route> {
+        Feature2Entry()
     }
 }
 
 @Composable
-private fun Feature1Entry(
-    viewModel: Feature1ViewModel = hiltViewModel()
+private fun Feature2Entry(
+    viewModel: Feature2ViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
-    Feature1Screen(uiState = uiState)
+    Feature2Screen(uiState = uiState)
 }

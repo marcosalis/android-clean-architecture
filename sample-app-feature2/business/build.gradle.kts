@@ -40,6 +40,7 @@ tasks.withType<KotlinJvmCompile>().configureEach {
 }
 
 dependencies {
+    api(project(":sample-app-feature2:entity"))
     implementation(project(":sample-app-feature2:data-access"))
 
     implementation(libs.androidx.core.ktx)

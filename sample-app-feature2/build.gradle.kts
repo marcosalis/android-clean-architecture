@@ -40,6 +40,12 @@ tasks.withType<KotlinJvmCompile>().configureEach {
     }
 }
 
+kotlin {
+    compilerOptions {
+        freeCompilerArgs.add("-XXLanguage:+ExplicitBackingFields")
+    }
+}
+
 dependencies {
     implementation(project(":sample-app-feature2:business"))
 
