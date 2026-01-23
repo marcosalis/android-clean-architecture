@@ -9,6 +9,7 @@ plugins {
 
 android {
     namespace = "dev.marcosalis.clean.business"
+
     compileSdk {
         version = release(libs.versions.sdk.compile.get().toInt())
     }
@@ -50,6 +51,4 @@ dependencies {
     implementation(libs.timber)
 
     testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
 }

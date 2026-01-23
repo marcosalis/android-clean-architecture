@@ -15,7 +15,7 @@ possible, the fundamental requirements of Clean Architecture. I have been using 
 successfully for years, evolving it with new technologies and Android guidelines.
 
 Compose, navigation and per-layer components (`ViewModel`s, UI states, use cases, repositories,
-entities) data loading and presentation techniques are also showcased within the codebase, following 
+entities) data loading and presentation techniques are also showcased within the codebase, following
 the current Android guidelines along with Clean Architecture best practices.
 
 These are the key aspect of my approach:
@@ -124,6 +124,23 @@ ensure the `business` layer doesn't depend on `data` (a third module `data-acces
 | **business**       | Business layer, contains use cases and platform-dependent business logic (which can be exposed to the presentation layer if necessary).                                               | `data-access`, `entity`, `ktx`                                |
 | **app-feature2**   | Horizontal splitting for a "big" feature, which can be used independently on different applications.                                                                                  | `entity`, `ktx`                                               |
 | **app**            | View and presentation layers for the _application module_. Contains shared `ViewModel`s, UI states, themes, styles, resources, strings, composables and app initialization code.      | `app-feature2`, `business`, `entity`, `ktx`, `data:injection` |
+
+### Feature modules
+
+The module `sample-app-feature2` represents a horizontal feature module that can easily be reused
+across applications. Similarly to `sample-app` at app level, it includes the `UI` and `presentation`
+layers for the feature. Its submodules mirror the layers splitting of the outer modules.
+
+Unfortunately, as of now Gradle doesn't have an easy way to declare a dependency set that is
+reusable across modules, while at the same time being able to access the version catalog (the shared 
+`buildSrc` folder approach doesn't have access to version catalogs).
+As a consequence, this approach currently requires quite a bit of duplication of boilerplate module
+configuration. It's still recommended for large, independent features that need to be separated from
+the rest of the project (but still retain the vertical layer separation).
+
+A more quickly scalable alternative for reusing features across applications is to create a single
+feature module (e.g. `sample-shared-features`) that is still vertically split by layer but includes
+multiple features (separate by package).
 
 ## Dependency Injection
 

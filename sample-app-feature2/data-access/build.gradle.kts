@@ -1,14 +1,13 @@
+
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 
 plugins {
     alias(libs.plugins.android.library)
-    alias(libs.plugins.dagger.hilt.android)
-    alias(libs.plugins.ksp)
 }
 
 android {
-    namespace = "dev.marcosalis.clean.data"
+    namespace = "dev.marcosalis.clean.feature2.data.access"
 
     compileSdk {
         version = release(libs.versions.sdk.compile.get().toInt())
@@ -39,19 +38,8 @@ tasks.withType<KotlinJvmCompile>().configureEach {
 }
 
 dependencies {
-    implementation(project(":sample-data-access"))
+    api(project(":sample-app-feature2:entity"))
 
+    implementation(libs.javax.inject)
     implementation(libs.androidx.core.ktx)
-
-    implementation(libs.kotlinx.serialization.json)
-
-    // Dagger / Hilt
-    implementation(libs.hilt.android)
-    ksp(libs.hilt.compiler)
-
-    implementation(libs.timber)
-
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
 }

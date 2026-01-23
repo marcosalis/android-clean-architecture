@@ -1,3 +1,4 @@
+
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 
@@ -8,7 +9,7 @@ plugins {
 }
 
 android {
-    namespace = "dev.marcosalis.clean.data"
+    namespace = "dev.marcosalis.feature2.business"
 
     compileSdk {
         version = release(libs.versions.sdk.compile.get().toInt())
@@ -39,11 +40,9 @@ tasks.withType<KotlinJvmCompile>().configureEach {
 }
 
 dependencies {
-    implementation(project(":sample-data-access"))
+    implementation(project(":sample-app-feature2:data-access"))
 
     implementation(libs.androidx.core.ktx)
-
-    implementation(libs.kotlinx.serialization.json)
 
     // Dagger / Hilt
     implementation(libs.hilt.android)
@@ -52,6 +51,4 @@ dependencies {
     implementation(libs.timber)
 
     testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
 }

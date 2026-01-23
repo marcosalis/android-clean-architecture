@@ -7,6 +7,7 @@ plugins {
 
 android {
     namespace = "dev.marcosalis.clean.data.access"
+
     compileSdk {
         version = release(libs.versions.sdk.compile.get().toInt())
     }

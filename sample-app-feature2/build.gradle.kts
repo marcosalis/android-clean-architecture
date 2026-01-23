@@ -1,8 +1,9 @@
+
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.dagger.hilt.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
@@ -10,38 +11,26 @@ plugins {
 }
 
 android {
-    namespace = "dev.marcosalis.clean"
+    namespace = "dev.marcosalis.clean.feature2"
     compileSdk {
         version = release(libs.versions.sdk.compile.get().toInt())
     }
 
     defaultConfig {
-        applicationId = "dev.marcosalis.clean"
         minSdk = libs.versions.sdk.min.get().toInt()
-        targetSdk = libs.versions.sdk.target.get().toInt()
-
-        versionCode = 1
-        versionName = "1.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
         }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_21
         targetCompatibility = JavaVersion.VERSION_21
-    }
-    buildFeatures {
-        compose = true
-        buildConfig = true
     }
 }
 
@@ -52,15 +41,11 @@ tasks.withType<KotlinJvmCompile>().configureEach {
 }
 
 dependencies {
-    implementation(project(":sample-business"))
-    implementation(project(":sample-data:injection")) // dependency injection propagation only
-
-    implementation(project(":sample-app-feature2"))
+    implementation(project(":sample-app-feature2:business"))
 
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.lifecycle.process)
 
     // Compose / UI
     implementation(libs.androidx.activity.compose)

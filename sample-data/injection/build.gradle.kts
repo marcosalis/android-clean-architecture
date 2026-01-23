@@ -36,4 +36,6 @@ tasks.withType<KotlinJvmCompile>().configureEach {
 dependencies {
     /** Connects `data` Dagger `@Module`s to the graph. See module's `README.md` for more details. */
     implementation(project(":sample-data"))
+
+    implementation(project(":sample-app-feature2:data")) // data layer initialization for `feature2`
 }

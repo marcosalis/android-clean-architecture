@@ -8,7 +8,7 @@ plugins {
 }
 
 android {
-    namespace = "dev.marcosalis.clean.data"
+    namespace = "dev.marcosalis.clean.feature2.data"
 
     compileSdk {
         version = release(libs.versions.sdk.compile.get().toInt())
@@ -39,7 +39,7 @@ tasks.withType<KotlinJvmCompile>().configureEach {
 }
 
 dependencies {
-    implementation(project(":sample-data-access"))
+    implementation(project(":sample-app-feature2:data-access"))
 
     implementation(libs.androidx.core.ktx)
 
