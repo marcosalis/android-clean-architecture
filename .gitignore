@@ -12,6 +12,8 @@
 /.idea/deploymentTargetSelector.xml
 .DS_Store
 /build
+/buildSrc/.gradle
+/buildSrc/build
 /captures
 .externalNativeBuild
 .cxx

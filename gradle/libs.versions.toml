@@ -11,7 +11,7 @@ agp = "9.0.0" # https://developer.android.com/reference/tools/gradle-api
 kotlin = "2.3.0" # https://kotlinlang.org/docs/whatsnew-eap.html
 ksp = "2.3.4" #  https://github.com/google/ksp/releases
 kotlinxCoroutines = "1.10.2" # https://github.com/Kotlin/kotlinx.coroutines/releases
-kotlinxSerialization = "1.9.0" # https://github.com/Kotlin/kotlinx.serialization/releases
+kotlinxSerialization = "1.10.0" # https://github.com/Kotlin/kotlinx.serialization/releases
 kotlinxDatetime = "0.7.1" # https://github.com/Kotlin/kotlinx-datetime/releases
 kotlinxImmutableCollections = "0.4.0" # https://github.com/Kotlin/kotlinx.collections.immutable/releases
 
@@ -69,7 +69,7 @@ androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "j
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
-androidx-navigation-testing = { group = "androidx.navigation", name = "navigation-testing" }
+androidx-navigation-testing = { group = "androidx.navigation", name = "navigation-testing", version.ref = "navigationCompose" }
 
 
 [plugins]
