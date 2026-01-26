@@ -1,0 +1,45 @@
+
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
+
+plugins {
+    alias(libs.plugins.android.library)
+}
+
+android {
+    namespace = "dev.marcosalis.clean.feature2.data.access"
+
+    compileSdk {
+        version = release(libs.versions.sdk.compile.get().toInt())
+    }
+
+    defaultConfig {
+        minSdk = libs.versions.sdk.min.get().toInt()
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
+    }
+
+    buildTypes {
+        release {
+            isMinifyEnabled = false
+        }
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
+    }
+}
+
+tasks.withType<KotlinJvmCompile>().configureEach {
+    compilerOptions {
+        jvmTarget.set(JvmTarget.JVM_21)
+    }
+}
+
+dependencies {
+    api(project(":sample-app-feature2:entity"))
+
+    implementation(libs.javax.inject)
+    implementation(libs.androidx.core.ktx)
+}

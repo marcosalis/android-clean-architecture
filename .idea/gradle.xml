@@ -4,21 +4,24 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
-        <option name="testRunner" value="GRADLE" />
-        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="testRunner" value="CHOOSE_PER_TEST" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleJvm" value="Embedded JDK" />
+        <option name="gradleJvm" value="#GRADLE_LOCAL_JAVA_HOME" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/sample-app" />
-            <option value="$PROJECT_DIR$/sample-app-core" />
-            <option value="$PROJECT_DIR$/sample-app-feature1" />
-            <option value="$PROJECT_DIR$/sample-business" />
+            <option value="$PROJECT_DIR$/sample-app-feature2" />
+            <option value="$PROJECT_DIR$/sample-app-feature2/business-usecase" />
+            <option value="$PROJECT_DIR$/sample-app-feature2/data" />
+            <option value="$PROJECT_DIR$/sample-app-feature2/data-access" />
+            <option value="$PROJECT_DIR$/sample-app-feature2/entity" />
+            <option value="$PROJECT_DIR$/sample-business-usecase" />
             <option value="$PROJECT_DIR$/sample-data" />
             <option value="$PROJECT_DIR$/sample-data-access" />
-            <option value="$PROJECT_DIR$/sample-data-bridge" />
+            <option value="$PROJECT_DIR$/sample-data/injection" />
             <option value="$PROJECT_DIR$/sample-entity" />
+            <option value="$PROJECT_DIR$/sample-ktx" />
           </set>
         </option>
       </GradleProjectSettings>
