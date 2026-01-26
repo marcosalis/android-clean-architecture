@@ -6,7 +6,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.navigation.toRoute
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.marcosalis.clean.feature2.entity.Feature2Action
-import dev.marcosalis.feature2.business.Feature2UseCase
+import dev.marcosalis.feature2.business.usecase.Feature2UseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch

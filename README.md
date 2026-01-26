@@ -108,22 +108,38 @@ Listed below, a quick description of each module and a class diagram with their 
 
 The following diagram expands from the more generic one above to illustrate the concrete modules'
 relationships in this sample project. Note how the _Dependency Inversion Principle_ is used to
-ensure the `business` layer doesn't depend on `data` (a third module `data-access` is used instead).
+ensure the `usecase` layer doesn't depend on `data` (a third module `data-access` is used instead).
 
 ![](docs/clean-app-architecture-dependency-diagram_v3.png)
 
 ### Modules description
 
-| Module             | Description                                                                                                                                                                           | Module dependencies (direct or indirect)                      | 
-|--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------| 
-| **ktx**            | General-purpose, pure Kotlin code (not JVM-dependent) with utility and extension functions                                                                                            | Kotlin coroutines, date-time, immutable collections           |
-| **entity**         | Business entities and platform-independent, product/company wide business rule (the `Entity` layer in _Clean_)                                                                        | `ktx`                                                         |
-| **data:injection** | "Bridge" module only used for the initialization of Dagger `@Module`s in the `Data` layer avoiding implementation details in the data layer from being accessible in the app module   | `data`, `data-access`, `entity`, `ktx`                        |
-| **data**           | The `Data ` layer, which includes networking, caching and data delivery for the business layer to manipulate. Exposes via Dagger the `data-access` dependencies to the business layer | `data-access`, `entity`, `ktx`                                |
-| **data-access**    | The `Data Access` layer, interfaces for the business layer to access the data layer                                                                                                   | `entity`, `ktx`                                               |
-| **business**       | Business layer, contains use cases and platform-dependent business logic (which can be exposed to the presentation layer if necessary).                                               | `data-access`, `entity`, `ktx`                                |
-| **app-feature2**   | Horizontal splitting for a "big" feature, which can be used independently on different applications.                                                                                  | `entity`, `ktx`                                               |
-| **app**            | View and presentation layers for the _application module_. Contains shared `ViewModel`s, UI states, themes, styles, resources, strings, composables and app initialization code.      | `app-feature2`, `business`, `entity`, `ktx`, `data:injection` |
+| Module                | Description                                                                                                                                                                           | Module dependencies (direct or indirect)                      | 
+|-----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------| 
+| **ktx**               | General-purpose, pure Kotlin code (not JVM-dependent) with utility and extension functions                                                                                            | Kotlin coroutines, date-time, immutable collections           |
+| **(business-)entity** | Business entities and platform-independent, product/company wide business rule (the `Entity` layer in _Clean_)                                                                        | `ktx`                                                         |
+| **data:injection**    | "Bridge" module only used for the initialization of Dagger `@Module`s in the `Data` layer avoiding implementation details in the data layer from being accessible in the app module   | `data`, `data-access`, `entity`, `ktx`                        |
+| **data**              | The `Data ` layer, which includes networking, caching and data delivery for the business layer to manipulate. Exposes via Dagger the `data-access` dependencies to the business layer | `data-access`, `entity`, `ktx`                                |
+| **data-access**       | The `Data Access` layer, interfaces for the business layer to access the data layer                                                                                                   | `entity`, `ktx`                                               |
+| **business-usecase**  | Use cases and platform-dependent business logic (which can be exposed to the presentation layer if necessary).                                                                        | `data-access`, `entity`, `ktx`                                |
+| **app-feature2**      | Horizontal splitting for a "big" feature, which can be used independently on different applications.                                                                                  | `entity`, `ktx`                                               |
+| **app**               | View and presentation layers for the _application module_. Contains shared `ViewModel`s, UI states, themes, styles, resources, strings, composables and app initialization code.      | `app-feature2`, `business`, `entity`, `ktx`, `data:injection` |
+
+### Layer naming disambiguation
+
+Naming conventions for architecture layers and grouping of layers tend to spark controversy amongst
+engineers. Although I did try to follow industry standards, the names I chose are not set in stone,
+and have also been adapted to ensure a meaningful order of appearance in the IDE (unfortunately, as
+of now Gradle doesn't allow to choose a personalized module order).
+
+#### Business / domain
+
+I use the terms `domain` and `business` interchangeably to represent a container for all business
+logic related modules (`business-usecase`, `data-access` and `entity`).
+The `entity` layer has a direct correspondence to the equivalent naming in Clean, to represent
+business entities that do not depend on repositories and platform-dependent rules.
+The `usecase` layer (whose module is named `business-usecase` for ordering purposes) does depend
+on `data-access` (which is also part of the domain/business layer group).
 
 ### Feature modules
 
@@ -132,7 +148,7 @@ across applications. Similarly to `sample-app` at app level, it includes the `UI
 layers for the feature. Its submodules mirror the layers splitting of the outer modules.
 
 Unfortunately, as of now Gradle doesn't have an easy way to declare a dependency set that is
-reusable across modules, while at the same time being able to access the version catalog (the shared 
+reusable across modules, while at the same time being able to access the version catalog (the shared
 `buildSrc` folder approach doesn't have access to version catalogs).
 As a consequence, this approach currently requires quite a bit of duplication of boilerplate module
 configuration. It's still recommended for large, independent features that need to be separated from
@@ -236,7 +252,7 @@ the `data` layer, which are in no way aware of each other).
 It is good practice to separate layer-internal dependencies from the public ones. Although not
 implemented in the sample, it would be tidier to create a new `InternalRepositoryModule` in the
 `data` layer for repositories (or other dependencies) that are only injected in other repositories
-and don't need to be exposed to the `business` layer. In this case, their interfaces shouldn't be
+and don't need to be exposed to the `usecase` layer. In this case, their interfaces shouldn't be
 declared in `data-access`, since they are not needed outside of `data`.
 
 In similar terms, when dealing with feature (Gradle) modules, it's a good idea to encapsulate the

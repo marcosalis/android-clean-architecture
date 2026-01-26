@@ -58,7 +58,7 @@ tasks.withType<KotlinJvmCompile>().configureEach {
 }
 
 dependencies {
-    implementation(project(":sample-business"))
+    implementation(project(":sample-business-usecase"))
     implementation(project(":sample-data:injection")) // dependency injection propagation only
 
     implementation(project(":sample-app-feature2"))

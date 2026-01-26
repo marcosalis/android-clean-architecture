@@ -6,7 +6,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.navigation.toRoute
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.marcosalis.clean.business.entity.feature1.Feature1Action
-import dev.marcosalis.clean.business.feature1.Feature1UseCase
+import dev.marcosalis.clean.business.usecase.feature1.Feature1UseCase
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map

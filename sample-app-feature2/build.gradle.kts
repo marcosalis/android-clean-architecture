@@ -47,8 +47,8 @@ kotlin {
 }
 
 dependencies {
-    implementation(project(":sample-app-feature2:business"))
 
+    implementation(project(":sample-app-feature2:business-usecase"))
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

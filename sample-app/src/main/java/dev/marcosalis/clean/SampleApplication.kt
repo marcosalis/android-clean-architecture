@@ -5,7 +5,7 @@ import android.app.Application
 import android.content.Context
 import dagger.Lazy
 import dagger.hilt.android.HiltAndroidApp
-import dev.marcosalis.clean.business.init.InitializeAppUseCase
+import dev.marcosalis.clean.business.usecase.init.InitializeAppUseCase
 import dev.marcosalis.clean.ktx.coroutines.ProcessScope
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch

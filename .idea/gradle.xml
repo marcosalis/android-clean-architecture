@@ -12,11 +12,11 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/sample-app" />
             <option value="$PROJECT_DIR$/sample-app-feature2" />
-            <option value="$PROJECT_DIR$/sample-app-feature2/business" />
+            <option value="$PROJECT_DIR$/sample-app-feature2/business-usecase" />
             <option value="$PROJECT_DIR$/sample-app-feature2/data" />
             <option value="$PROJECT_DIR$/sample-app-feature2/data-access" />
             <option value="$PROJECT_DIR$/sample-app-feature2/entity" />
-            <option value="$PROJECT_DIR$/sample-business" />
+            <option value="$PROJECT_DIR$/sample-business-usecase" />
             <option value="$PROJECT_DIR$/sample-data" />
             <option value="$PROJECT_DIR$/sample-data-access" />
             <option value="$PROJECT_DIR$/sample-data/injection" />
