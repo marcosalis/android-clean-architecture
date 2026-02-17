@@ -4,7 +4,7 @@ The purpose of this repository is to showcase, with a very simple (but hopefully
 Android project, how I got inspiration from Uncle
 Bob's [Clean Architecture](https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html)
 to structure the projects I work on.
-This is a full, up to date rewrite of
+This is a full, up-to-date rewrite of
 the [sample project](https://github.com/Teamwork/android-clean-architecture) I showcased while
 working for Teamwork a good few years ago.
 
@@ -21,14 +21,14 @@ the current Android guidelines along with Clean Architecture best practices.
 These are the key aspect of my approach:
 
 - It **bridges the gap** between _Clean Architecture_ and platform-specific Android guidelines.
-- It is **scalable** up to very large projects, but it also works well with small/medium sized ones.
+- It is **scalable** up to very large projects, but it also works well with small/medium-sized ones.
 - It enforces **strict layer separation rules**, so that it's hard to make accidental mistakes
   (especially useful for large teams with inexperienced developers).
 - It can be used as a **template for other platforms** (e.g. _iOS_ -KMP version coming up-).
 - It does require a bit of an initial **learning curve** compared to more basic approaches (but it
   becomes extremely simple once the structural concepts are clear).
 
-**This is not a working demo app**: the only purpose of the classes in the project is to demonstrate
+**This is not a working demo app**: the only purpose of classes in the project is to demonstrate
 how the dependency graphs work with the configuration explained below, and to illustrate which
 dependencies are typically involved in this type of architecture. The fact that the project
 compiles, as simple as it sounds, is what matters!
@@ -54,12 +54,32 @@ This diagram outlines my high level approach, along with how dependencies are st
 
 ![](docs/clean-app-architecture-layers-dependency-diagram_v3.png)
 
+### Screaming Architecture?
+
+The "_Screaming Architecture_" concept dictates that the architecture of a project should outline
+what the system does, rather than how it is implemented. In my sample, features are represented as
+"second level" items (_packages_) as opposed to "first level" (_modules_).
+
+This is a compromise I often choose in practice, to avoid overcomplicating the Gradle module
+structure. It pays benefits especially on small/medium projects, where granular feature reuse across
+products isn't required. With this approach, it's easier to enforce strict boundaries between
+layers, while the intent of the system is still extremely clear by just opening a module and looking
+at its package structure.
+
+For larger projects and to follow more to the letter the "features as first class components", it's
+always possible to use the _feature module_ approach (with nested modules per layer) that I also
+showcase in this sample, at a cost of more boilerplate code. Whether to pick one approach or the
+other depends on many factors, including simple personal/team preference, and it doesn't impact in
+any critical way the tidiness of the structure, nor clashes with Clean Architecture best practices.
+
+See "Vertical Slices Architecture" for a different (yet still compatible) approach on this topic.
+
 ## Fundamental approach
 
 There is no such thing as *"the best architecture"* when it comes to software development: the best
 architecture approach for a project (or team) always depends on a series of factors and assumptions.
 
-There are, however, some universally recognised best practices that are not specific of Clean
+There are, however, some universally recognized best practices that are not specific of Clean
 Architecture; they heavily influence the ability of a project to scale and survive in the long
 term, so I assume any (most?) experienced engineer is able to understand the benefits without any
 further explanation: I'm talking about the following:
@@ -80,8 +100,8 @@ This solution (always subject to refinement and improvements) is based on the fo
 - **Software changes often.** Any architecture must support and facilitate change; providing a solid
   and well crafted project structure helps keeping a codebase tidy, consistent and testable,
   separating concerns and layers so that a change in one of them doesn't impact all others.
-- **Code reusability.** Modularising components is the only way to ensure that code is reusable
-  across projects, maximising bandwidth as a team and ensure that bug fixes and improvements are
+- **Code reusability.** Modularizing components is the only way to ensure that code is reusable
+  across projects, maximizing bandwidth as a team and ensure that bug fixes and improvements are
   promptly delivered.
 - **Almost no application is trivial.** Most applications contain non-trivial logic and/or an amount
   of screens and use cases that justifies all of the above: **structuring code in a formal and clear
@@ -174,7 +194,7 @@ _data(-access) layer_).
 
 As an exception to this rule, the dependency graph initialization code in Dagger needs access to all
 the `@Module`s in the codebase in order to fully build the graph itself. This is completely
-transparent to the developer, and it shouldn't impact the above mentioned boundary definitions and
+transparent to the developer, and it shouldn't impact the above-mentioned boundary definitions and
 enforcement.
 
 The sample project doesn't cover other useful _Dagger_ features such custom scopes and
@@ -197,7 +217,7 @@ Each Dagger `@Module` is `internal`, and it is created and initialized within th
 Dagger itself via the `@InstallIn(SingletonComponent::class)` default mechanism.
 so that each dependency graph is only fully visible inside the module.
 This guarantees encapsulation and allows us to declare both classes and the bound interfaces as
-`internal` if we don't want to provide access to them outside of the module.
+`internal` if we don't want to provide access to them outside the module.
 
 Conversely, dependencies that are needed outside the scope of the module can simply declare their
 interface as public, without exposing the bound implementation: Dagger will be able to inject those
@@ -256,7 +276,7 @@ and don't need to be exposed to the `usecase` layer. In this case, their interfa
 declared in `data-access`, since they are not needed outside of `data`.
 
 In similar terms, when dealing with feature (Gradle) modules, it's a good idea to encapsulate the
-dependency declaration within the module itself (and its layer sub-module). By installing the
+dependency declaration within the module itself (and its layer submodule). By installing the
 feature `@Module` directly into `SingletonComponent`, we automatically make those dependencies
 available at the application level (at the cost of losing some flexibility when different app
 projects use the same feature module and need to handle their dependencies differently).
