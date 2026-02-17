@@ -21,14 +21,14 @@ the current Android guidelines along with Clean Architecture best practices.
 These are the key aspect of my approach:
 
 - It **bridges the gap** between _Clean Architecture_ and platform-specific Android guidelines.
-- It is **scalable** up to very large projects, but it also works well with small/medium sized ones.
+- It is **scalable** up to very large projects, but it also works well with small/medium-sized ones.
 - It enforces **strict layer separation rules**, so that it's hard to make accidental mistakes
   (especially useful for large teams with inexperienced developers).
 - It can be used as a **template for other platforms** (e.g. _iOS_ -KMP version coming up-).
 - It does require a bit of an initial **learning curve** compared to more basic approaches (but it
   becomes extremely simple once the structural concepts are clear).
 
-**This is not a working demo app**: the only purpose of the classes in the project is to demonstrate
+**This is not a working demo app**: the only purpose of classes in the project is to demonstrate
 how the dependency graphs work with the configuration explained below, and to illustrate which
 dependencies are typically involved in this type of architecture. The fact that the project
 compiles, as simple as it sounds, is what matters!
@@ -54,12 +54,32 @@ This diagram outlines my high level approach, along with how dependencies are st
 
 ![](docs/clean-app-architecture-layers-dependency-diagram_v3.png)
 
+### Screaming Architecture?
+
+The "_Screaming Architecture_" concept dictates that the architecture of a project should outline
+what the system does, rather than how it is implemented. In my sample, features are represented as
+"second level" items (_packages_) as opposed to "first level" (_modules_).
+
+This is a compromise I often choose in practice, to avoid overcomplicating the Gradle module
+structure. It pays benefits especially on small/medium projects, where granular feature reuse across
+products isn't required. With this approach, it's easier to enforce strict boundaries between
+layers, while the intent of the system is still extremely clear by just opening a module and looking
+at its package structure.
+
+For larger projects and to follow more to the letter the "features as first class components", it's
+always possible to use the _feature module_ approach (with nested modules per layer) that I also
+showcase in this sample, at a cost of more boilerplate code. Whether to pick one approach or the
+other depends on many factors, including simple personal/team preference, and it doesn't impact in
+any critical way the tidiness of the structure, nor clashes with Clean Architecture best practices.
+
+See "Vertical Slices Architecture" for a different (yet still compatible) approach on this topic.
+
 ## Fundamental approach
 
 There is no such thing as *"the best architecture"* when it comes to software development: the best
 architecture approach for a project (or team) always depends on a series of factors and assumptions.
 
-There are, however, some universally recognised best practices that are not specific of Clean
+There are, however, some universally recognized best practices that are not specific of Clean
 Architecture; they heavily influence the ability of a project to scale and survive in the long
 term, so I assume any (most?) experienced engineer is able to understand the benefits without any
 further explanation: I'm talking about the following:
