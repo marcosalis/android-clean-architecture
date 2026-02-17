@@ -7,7 +7,7 @@ sdk-target = "36"
 #noinspection UnusedVersionCatalogEntry
 sdk-min = "28"
 
-agp = "9.0.0" # https://developer.android.com/reference/tools/gradle-api
+agp = "9.0.1" # https://developer.android.com/reference/tools/gradle-api
 kotlin = "2.3.0" # https://kotlinlang.org/docs/whatsnew-eap.html
 ksp = "2.3.4" #  https://github.com/google/ksp/releases
 kotlinxCoroutines = "1.10.2" # https://github.com/Kotlin/kotlinx.coroutines/releases
