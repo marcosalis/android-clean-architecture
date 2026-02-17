@@ -4,7 +4,7 @@ The purpose of this repository is to showcase, with a very simple (but hopefully
 Android project, how I got inspiration from Uncle
 Bob's [Clean Architecture](https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html)
 to structure the projects I work on.
-This is a full, up to date rewrite of
+This is a full, up-to-date rewrite of
 the [sample project](https://github.com/Teamwork/android-clean-architecture) I showcased while
 working for Teamwork a good few years ago.
 
@@ -100,8 +100,8 @@ This solution (always subject to refinement and improvements) is based on the fo
 - **Software changes often.** Any architecture must support and facilitate change; providing a solid
   and well crafted project structure helps keeping a codebase tidy, consistent and testable,
   separating concerns and layers so that a change in one of them doesn't impact all others.
-- **Code reusability.** Modularising components is the only way to ensure that code is reusable
-  across projects, maximising bandwidth as a team and ensure that bug fixes and improvements are
+- **Code reusability.** Modularizing components is the only way to ensure that code is reusable
+  across projects, maximizing bandwidth as a team and ensure that bug fixes and improvements are
   promptly delivered.
 - **Almost no application is trivial.** Most applications contain non-trivial logic and/or an amount
   of screens and use cases that justifies all of the above: **structuring code in a formal and clear
@@ -194,7 +194,7 @@ _data(-access) layer_).
 
 As an exception to this rule, the dependency graph initialization code in Dagger needs access to all
 the `@Module`s in the codebase in order to fully build the graph itself. This is completely
-transparent to the developer, and it shouldn't impact the above mentioned boundary definitions and
+transparent to the developer, and it shouldn't impact the above-mentioned boundary definitions and
 enforcement.
 
 The sample project doesn't cover other useful _Dagger_ features such custom scopes and
@@ -217,7 +217,7 @@ Each Dagger `@Module` is `internal`, and it is created and initialized within th
 Dagger itself via the `@InstallIn(SingletonComponent::class)` default mechanism.
 so that each dependency graph is only fully visible inside the module.
 This guarantees encapsulation and allows us to declare both classes and the bound interfaces as
-`internal` if we don't want to provide access to them outside of the module.
+`internal` if we don't want to provide access to them outside the module.
 
 Conversely, dependencies that are needed outside the scope of the module can simply declare their
 interface as public, without exposing the bound implementation: Dagger will be able to inject those
@@ -276,7 +276,7 @@ and don't need to be exposed to the `usecase` layer. In this case, their interfa
 declared in `data-access`, since they are not needed outside of `data`.
 
 In similar terms, when dealing with feature (Gradle) modules, it's a good idea to encapsulate the
-dependency declaration within the module itself (and its layer sub-module). By installing the
+dependency declaration within the module itself (and its layer submodule). By installing the
 feature `@Module` directly into `SingletonComponent`, we automatically make those dependencies
 available at the application level (at the cost of losing some flexibility when different app
 projects use the same feature module and need to handle their dependencies differently).
