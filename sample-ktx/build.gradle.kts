@@ -1,27 +1,37 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
-    alias(libs.plugins.jetbrains.kotlin.jvm)
-}
-
-java {
-    sourceCompatibility = JavaVersion.VERSION_21
-    targetCompatibility = JavaVersion.VERSION_21
+    alias(libs.plugins.android.kotlin.multiplatform)
+    alias(libs.plugins.jetbrains.kotlin.multiplatform)
 }
 
 kotlin {
-    compilerOptions {
-        jvmTarget = JvmTarget.JVM_21
+   jvmToolchain(JvmTarget.JVM_21.target.toInt())
+
+    android {
+        namespace = "dev.marcosalis.clean.ktx"
+        compileSdk { version = release(libs.versions.sdk.compile.get().toInt()) }
+        minSdk { version = release(libs.versions.sdk.min.get().toInt()) }
+
+        compilerOptions {
+           jvmTarget.set(JvmTarget.JVM_21)
+        }
     }
-}
 
-dependencies {
-    implementation(libs.javax.inject)
+    sourceSets {
+        val commonMain by getting {
+            dependencies {
+                api(libs.javax.inject)
+                api(libs.kotlinx.datetime)
+                api(libs.kotlinx.coroutines)
+                api(libs.kotlinx.collections.immutable)
+            }
+        }
 
-    // Kotlin fundamentals
-    api(libs.kotlinx.datetime)
-    api(libs.kotlinx.coroutines)
-    api(libs.kotlinx.collections.immutable)
-
-    testImplementation(libs.junit)
+        val commonTest by getting {
+            dependencies {
+                implementation(libs.junit)
+            }
+        }
+    }
 }
