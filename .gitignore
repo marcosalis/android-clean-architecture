@@ -1,6 +1,7 @@
 *.iml
 .gradle
 /local.properties
+/.idea/artifacts
 /.idea/caches
 /.idea/libraries
 /.idea/misc.xml
@@ -10,6 +11,7 @@
 /.idea/navEditor.xml
 /.idea/assetWizardSettings.xml
 /.idea/deploymentTargetSelector.xml
+/.idea/androidTestResultsUserPreferences.xml
 /.kotlin/sessions
 .DS_Store
 /build

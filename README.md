@@ -1,3 +1,5 @@
+[![Build Status](https://app.bitrise.io/app/a89bd0b3-f10b-4a0a-b37f-f58aaac3ff58/status.svg?token=YKvvyq85zZ2kHeWuyu-mgQ&branch=main)](https://app.bitrise.io/app/a89bd0b3-f10b-4a0a-b37f-f58aaac3ff58)
+
 # Clean Architecture on Android: a pragmatic way
 
 The purpose of this repository is to showcase, with a very simple (but hopefully clear) sample
