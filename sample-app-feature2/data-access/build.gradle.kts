@@ -1,45 +1,37 @@
-
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 
 plugins {
-    alias(libs.plugins.android.library)
+    alias(libs.plugins.android.kotlin.multiplatform)
+    alias(libs.plugins.jetbrains.kotlin.multiplatform)
 }
 
-android {
-    namespace = "dev.marcosalis.clean.feature2.data.access"
+kotlin {
+    jvmToolchain(JvmTarget.JVM_21.target.toInt())
 
-    compileSdk {
-        version = release(libs.versions.sdk.compile.get().toInt())
-    }
+    jvm() // just for unit tests
 
-    defaultConfig {
-        minSdk = libs.versions.sdk.min.get().toInt()
+    android {
+        namespace = "dev.marcosalis.clean.feature2.data.access"
+        compileSdk { version = release(libs.versions.sdk.compile.get().toInt()) }
+        minSdk { version = release(libs.versions.sdk.min.get().toInt()) }
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
-    }
-
-    buildTypes {
-        release {
-            isMinifyEnabled = false
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_21)
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_21
-        targetCompatibility = JavaVersion.VERSION_21
+
+    sourceSets {
+        @Suppress("unused") val commonMain by getting {
+            dependencies {
+                api(project(":sample-app-feature2:entity"))
+            }
+        }
+
+        @Suppress("unused") val commonTest by getting {
+            dependencies {
+                implementation(kotlin("test"))
+                implementation(libs.junit)
+            }
+        }
     }
-}
-
-tasks.withType<KotlinJvmCompile>().configureEach {
-    compilerOptions {
-        jvmTarget.set(JvmTarget.JVM_21)
-    }
-}
-
-dependencies {
-    api(project(":sample-app-feature2:entity"))
-
-    implementation(libs.javax.inject)
-    implementation(libs.androidx.core.ktx)
 }

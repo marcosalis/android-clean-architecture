@@ -19,16 +19,10 @@ kotlin {
     }
 
     sourceSets {
-        val commonMain by getting {
+       @Suppress("unused") val commonMain by getting {
             dependencies {
                 api(project(":sample-entity"))
                 api(project(":sample-ktx"))
-            }
-        }
-
-        val commonTest by getting {
-            dependencies {
-                implementation(libs.junit)
             }
         }
     }
