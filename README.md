@@ -1,4 +1,4 @@
-[![Build Status](https://app.bitrise.io/app/d74f9b80-869f-47f6-b1fe-31de426b998f/status.svg?token=hGYhgUh6qQXxZtBSeXu2tQ&branch=main)](https://app.bitrise.io/app/d74f9b80-869f-47f6-b1fe-31de426b998f)
+[![Build Status](https://app.bitrise.io/app/d74f9b80-869f-47f6-b1fe-31de426b998f/status.svg?token=hGYhgUh6qQXxZtBSeXu2tQ&branch=kmp)](https://app.bitrise.io/app/d74f9b80-869f-47f6-b1fe-31de426b998f)
 
 # Clean Architecture on Android: a pragmatic way
 
