@@ -4,9 +4,9 @@ import org.junit.Assert.assertEquals
 import org.junit.Test
 
 /**
- * JUnit unit test.
+ * JUnit Android host unit test.
  */
-class ExampleJvmUnitTest {
+class ExampleAndroidHostUnitTest {
     @Test
     fun addition_isCorrect() {
         assertEquals(4, 2 + 2)

@@ -8,8 +8,6 @@ plugins {
 kotlin {
     jvmToolchain(JvmTarget.JVM_21.target.toInt())
 
-    jvm() // only for unit tests
-
     android {
         namespace = "dev.marcosalis.clean.ktx"
         compileSdk { version = release(libs.versions.sdk.compile.get().toInt()) }
@@ -18,12 +16,15 @@ kotlin {
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_21)
         }
+
+        // Enable host tests for the Android target
+        withHostTest {}
     }
 
-    // iOS targets go here
+    // iOS targets omitted (add if necessary)
 
     sourceSets {
-        // note: this is a Kotlin-only module, no platform-specific code should go here
+        // note: this is a Kotlin-only module, no platform-specific source set should go here
 
         @Suppress("unused") val commonMain by getting {
             dependencies {
@@ -34,7 +35,7 @@ kotlin {
             }
         }
 
-        // `./gradlew :sample-ktx:check` to run all targets tests
+        // `./gradlew :sample-ktx:check` to run all targets unit tests
 
         val commonTest by getting {
             dependencies {
@@ -42,8 +43,9 @@ kotlin {
             }
         }
 
-        @Suppress("unused") // `jvmTest` source set declaration is required to run `commonTest` tests
-        val jvmTest by getting {
+        @Suppress("unused")
+        // `androidHostTest` source set declaration is only required to run `commonTest` tests
+        val androidHostTest by getting {
             dependsOn(commonTest)
             dependencies {
                 implementation(libs.junit)

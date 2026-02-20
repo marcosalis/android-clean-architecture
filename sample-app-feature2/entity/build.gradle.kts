@@ -18,6 +18,8 @@ kotlin {
         }
     }
 
+    // iOS targets omitted (add if necessary)
+
     sourceSets {
        @Suppress("unused") val commonMain by getting {
             dependencies {
