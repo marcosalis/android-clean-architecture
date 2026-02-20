@@ -3,6 +3,8 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 
 plugins {
     alias(libs.plugins.android.library)
+    alias(libs.plugins.dagger.hilt.android)
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -38,4 +40,8 @@ dependencies {
     implementation(project(":sample-data"))
 
     implementation(project(":sample-app-feature2:data")) // data layer initialization for `feature2`
+
+    // Dagger / Hilt
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
 }

@@ -1,6 +1,4 @@
-@file:Suppress("unused")
-
-package dev.marcosalis.clean.data.di
+package dev.marcosalis.clean.data.injection
 
 import dagger.Binds
 import dagger.Module

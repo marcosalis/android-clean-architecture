@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
-internal class Feature1RepositoryImpl @Inject constructor(
+class Feature1RepositoryImpl @Inject constructor(
     dispatchers: DispatcherProvider
 ) : Feature1Repository {
 

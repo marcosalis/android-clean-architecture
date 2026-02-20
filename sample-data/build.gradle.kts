@@ -1,57 +1,57 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 
 plugins {
-    alias(libs.plugins.android.library)
-    alias(libs.plugins.dagger.hilt.android)
-    alias(libs.plugins.ksp)
+    alias(libs.plugins.android.kotlin.multiplatform)
+    alias(libs.plugins.jetbrains.kotlin.multiplatform)
 }
 
-android {
-    namespace = "dev.marcosalis.clean.data"
+kotlin {
+    jvmToolchain(JvmTarget.JVM_21.target.toInt())
 
-    compileSdk {
-        version = release(libs.versions.sdk.compile.get().toInt())
+    android {
+        namespace = "dev.marcosalis.clean.data"
+        compileSdk { version = release(libs.versions.sdk.compile.get().toInt()) }
+        minSdk { version = release(libs.versions.sdk.min.get().toInt()) }
+
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_21)
+        }
+
+        // Enable host tests for the Android target
+        withHostTest {}
     }
 
-    defaultConfig {
-        minSdk = libs.versions.sdk.min.get().toInt()
+    // iOS targets omitted (add if necessary)
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
-    }
+    sourceSets {
+        @Suppress("unused") val commonMain by getting {
+            dependencies {
+                api(project(":sample-data-access"))
+            }
+        }
 
-    buildTypes {
-        release {
-            isMinifyEnabled = false
+        @Suppress("unused") val androidMain by getting {
+            dependencies {
+                implementation(libs.androidx.core.ktx)
+
+                implementation(libs.kotlinx.serialization.json)
+
+                implementation(libs.timber)
+            }
+        }
+
+        val commonTest by getting {
+            dependencies {
+                implementation(kotlin("test"))
+                implementation(libs.junit)
+            }
+        }
+
+        @Suppress("unused") val androidHostTest by getting {
+            dependsOn(commonTest)
+            dependencies {
+                implementation(libs.junit)
+            }
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_21
-        targetCompatibility = JavaVersion.VERSION_21
-    }
-}
-
-tasks.withType<KotlinJvmCompile>().configureEach {
-    compilerOptions {
-        jvmTarget.set(JvmTarget.JVM_21)
-    }
-}
-
-dependencies {
-    implementation(project(":sample-data-access"))
-
-    implementation(libs.androidx.core.ktx)
-
-    implementation(libs.kotlinx.serialization.json)
-
-    // Dagger / Hilt
-    implementation(libs.hilt.android)
-    ksp(libs.hilt.compiler)
-
-    implementation(libs.timber)
-
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
 }
