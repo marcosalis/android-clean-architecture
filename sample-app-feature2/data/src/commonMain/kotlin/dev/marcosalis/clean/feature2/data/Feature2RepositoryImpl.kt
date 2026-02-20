@@ -8,7 +8,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-internal class Feature2RepositoryImpl @Inject constructor(
+class Feature2RepositoryImpl @Inject constructor(
     @param:ProcessScope private val processScope: CoroutineScope,
     private val dispatchers: DispatcherProvider
 ) : Feature2Repository {

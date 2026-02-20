@@ -4,15 +4,16 @@ package dev.marcosalis.clean.feature2.data.di
 
 import dagger.Binds
 import dagger.Module
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
 import dev.marcosalis.clean.data.access.Feature2Repository
 import dev.marcosalis.clean.feature2.data.Feature2RepositoryImpl
 import javax.inject.Singleton
 
+/**
+ * Feature-specific Dagger module: extend common repository module with this to provide all declared
+ * classes in the `SingletonComponent`.
+ */
 @Module
-@InstallIn(SingletonComponent::class)
-internal interface RepositoryFeature2Module {
+interface RepositoryFeature2Module {
 
     @Binds
     @Singleton
