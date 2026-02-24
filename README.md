@@ -16,6 +16,12 @@ Template repository to showcase how I structure an Android project following, as
 possible, the fundamental requirements of Clean Architecture. I have been using this structure
 successfully for years, evolving it with new technologies and Android guidelines.
 
+> [!NOTE]
+> **Kotlin Multiplatform** approach: the `kmp` branch showcases _a_ possible approach for a
+> multi-platform project to share significant parts of logic (use cases, entities) and data layer
+> between platforms using KMP. The modified sample still retains all the other structural properties
+> explained in this document.
+
 Compose, navigation and per-layer components (`ViewModel`s, UI states, use cases, repositories,
 entities) data loading and presentation techniques are also showcased within the codebase, following
 the current Android guidelines along with Clean Architecture best practices.
@@ -26,14 +32,15 @@ These are the key aspect of my approach:
 - It is **scalable** up to very large projects, but it also works well with small/medium-sized ones.
 - It enforces **strict layer separation rules**, so that it's hard to make accidental mistakes
   (especially useful for large teams with inexperienced developers).
-- It can be used as a **template for other platforms** (e.g. _iOS_ -KMP version coming up-).
+- It can be used as a **template for other platforms** (see `kmp` branch).
 - It does require a bit of an initial **learning curve** compared to more basic approaches (but it
   becomes extremely simple once the structural concepts are clear).
 
-**This is not a working demo app**: the only purpose of classes in the project is to demonstrate
-how the dependency graphs work with the configuration explained below, and to illustrate which
-dependencies are typically involved in this type of architecture. The fact that the project
-compiles, as simple as it sounds, is what matters!
+> [!NOTE]
+> **This is not a working demo app**: the only purpose of classes in the project is to demonstrate
+> how the dependency graphs work with the configuration explained below, and to illustrate which
+> dependencies are typically involved in this type of architecture. The fact that the project
+> compiles, as simple as it sounds, is what matters!
 
 Given that broad nature of the topic and the amount of implementation details necessary to implement
 a working production project, I have simplified the example as much as possible and focused solely
@@ -232,6 +239,13 @@ implementation `AppInitializationRepositoryImpl` is `internal` and declared with
 By doing so, we also encapsulate the usage of Dagger within the module itself, without forcing
 external "client code" to use the framework, and simplifying injecting a mock of the whole component
 for testing when needed.
+
+> [!IMPORTANT]
+> The **Kotlin Multiplatform** implementation in the `kmp` branch implements a slightly different,
+> less clean approach for using Dagger (since it's not currently supported by KMP modules with KSP).
+> The Dagger/Hilt `@Module`s are declared in Android modules, to avoid completely altering the D.I.
+> framework and structure. Of course, using Koin for KMP (or even a mixed approach) is perfectly
+> reasonable in this context, but it goes beyond the scope of the sample project.
 
 ### Initialization
 
