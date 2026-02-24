@@ -1,13 +1,8 @@
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-
 plugins {
-    alias(libs.plugins.android.kotlin.multiplatform)
-    alias(libs.plugins.jetbrains.kotlin.multiplatform)
+    id("convention.kmp.android") // common configuration in Conventions plugin
 }
 
 kotlin {
-    jvmToolchain(JvmTarget.JVM_21.target.toInt())
-
     compilerOptions {
         // Common compiler options applied to all Kotlin source sets
         freeCompilerArgs.add("-Xexpect-actual-classes")
@@ -15,15 +10,6 @@ kotlin {
 
     android {
         namespace = "dev.marcosalis.clean.ktx"
-        compileSdk { version = release(libs.versions.sdk.compile.get().toInt()) }
-        minSdk { version = release(libs.versions.sdk.min.get().toInt()) }
-
-        compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_21)
-        }
-
-        // Enable host tests for the Android target
-        withHostTest {}
     }
 
     // iOS targets omitted (add if necessary)
@@ -31,36 +17,15 @@ kotlin {
     sourceSets {
         // note: this is mostly a Kotlin-only module, only shared platform-specific code should be added here
 
-        @Suppress("unused") val commonMain by getting {
-            dependencies {
-                api(libs.javax.inject)
-                api(libs.kotlinx.datetime)
-                api(libs.kotlinx.coroutines)
-                api(libs.kotlinx.collections.immutable)
-            }
+        commonMain.dependencies {
+            api(libs.javax.inject)
+            api(libs.kotlinx.datetime)
+            api(libs.kotlinx.coroutines)
+            api(libs.kotlinx.collections.immutable)
         }
 
-        @Suppress("unused") val androidMain by getting {
-            dependencies {
-                implementation(libs.timber)
-            }
-        }
-
-        // `./gradlew :sample-ktx:check` to run all targets unit tests
-
-        val commonTest by getting {
-            dependencies {
-                implementation(kotlin("test"))
-            }
-        }
-
-        @Suppress("unused")
-        // `androidHostTest` source set declaration is required to run `commonTest` tests
-        val androidHostTest by getting {
-            dependsOn(commonTest)
-            dependencies {
-                implementation(libs.junit)
-            }
+        androidMain.dependencies {
+            implementation(libs.timber)
         }
     }
 }

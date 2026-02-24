@@ -1,24 +1,10 @@
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-
 plugins {
-    alias(libs.plugins.android.kotlin.multiplatform)
-    alias(libs.plugins.jetbrains.kotlin.multiplatform)
+    id("convention.kmp.android") // common configuration in Conventions plugin
 }
 
 kotlin {
-    jvmToolchain(JvmTarget.JVM_21.target.toInt())
-
     android {
         namespace = "dev.marcosalis.clean.business.entity"
-        compileSdk { version = release(libs.versions.sdk.compile.get().toInt()) }
-        minSdk { version = release(libs.versions.sdk.min.get().toInt()) }
-
-        compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_21)
-        }
-
-        // Enable host tests for the Android target
-        withHostTest {}
     }
 
     // iOS targets omitted (add if necessary)
@@ -26,26 +12,8 @@ kotlin {
     sourceSets {
         // note: this is a Kotlin-only module, no platform-specific source set should go here
 
-        @Suppress("unused") val commonMain by getting {
-            dependencies {
-                api(project(":sample-ktx"))
-            }
-        }
-
-        val commonTest by getting {
-            dependencies {
-                implementation(kotlin("test"))
-                implementation(libs.junit)
-            }
-        }
-
-        @Suppress("unused")
-        // `androidHostTest` source set declaration is only required to run `commonTest` tests
-        val androidHostTest by getting {
-            dependsOn(commonTest)
-            dependencies {
-                implementation(libs.junit)
-            }
+        commonMain.dependencies {
+            api(project(":sample-ktx"))
         }
     }
 }
