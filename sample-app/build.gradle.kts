@@ -1,8 +1,5 @@
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
-
 plugins {
-    alias(libs.plugins.android.application)
+    id("convention.android.application")
     alias(libs.plugins.dagger.hilt.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
@@ -11,19 +8,12 @@ plugins {
 
 android {
     namespace = "dev.marcosalis.clean"
-    compileSdk {
-        version = release(libs.versions.sdk.compile.get().toInt())
-    }
 
     defaultConfig {
         applicationId = "dev.marcosalis.clean"
-        minSdk = libs.versions.sdk.min.get().toInt()
-        targetSdk = libs.versions.sdk.target.get().toInt()
 
         versionCode = 1
-        versionName = "3.0.0"
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        versionName = "3.1.0"
     }
 
     buildTypes {
@@ -35,10 +25,7 @@ android {
             )
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_21
-        targetCompatibility = JavaVersion.VERSION_21
-    }
+
     buildFeatures {
         compose = true
         buildConfig = true
@@ -48,12 +35,6 @@ android {
 kotlin {
     compilerOptions {
         freeCompilerArgs.add("-XXLanguage:+ExplicitBackingFields")
-    }
-}
-
-tasks.withType<KotlinJvmCompile>().configureEach {
-    compilerOptions {
-        jvmTarget.set(JvmTarget.JVM_21)
     }
 }
 
@@ -84,14 +65,10 @@ dependencies {
     ksp(libs.hilt.compiler)
     ksp(libs.hilt.compiler.androidx)
 
-    implementation(libs.timber)
-
     implementation(libs.kotlinx.serialization.json)
 
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
-
-    testImplementation(libs.junit)
 
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

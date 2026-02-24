@@ -4,6 +4,7 @@
 /.idea/artifacts
 /.idea/caches
 /.idea/libraries
+/.idea/kotlinc.xml
 /.idea/misc.xml
 /.idea/modules.xml
 /.idea/workspace.xml
@@ -15,8 +16,8 @@
 /.kotlin/sessions
 .DS_Store
 /build
-/buildSrc/.gradle
-/buildSrc/build
+/build-logic/.gradle
+/build-logic/convention/build
 /captures
 .externalNativeBuild
 .cxx
