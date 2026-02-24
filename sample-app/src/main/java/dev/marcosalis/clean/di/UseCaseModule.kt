@@ -1,6 +1,4 @@
-@file:Suppress("unused")
-
-package dev.marcosalis.clean.business.usecase.di
+package dev.marcosalis.clean.di
 
 import dagger.Binds
 import dagger.Module
@@ -12,6 +10,10 @@ import dev.marcosalis.clean.business.usecase.init.InitializeAppUseCase
 import dev.marcosalis.clean.business.usecase.init.InitializeAppUseCaseImpl
 import javax.inject.Singleton
 
+/**
+ * With KMP, the use case layer module is declared in the `app` Android module.
+ * Dagger with KSP isn't supported on KMP modules.
+ */
 @Module
 @InstallIn(SingletonComponent::class)
 internal interface UseCaseModule {

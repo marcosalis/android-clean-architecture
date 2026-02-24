@@ -1,6 +1,4 @@
-@file:Suppress("unused")
-
-package dev.marcosalis.feature2.business.usecase.di
+package dev.marcosalis.clean.feature2.di
 
 import dagger.Binds
 import dagger.Module

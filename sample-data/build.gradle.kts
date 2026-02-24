@@ -17,6 +17,14 @@ kotlin {
             jvmTarget.set(JvmTarget.JVM_21)
         }
 
+        @Suppress("UnstableApiUsage")
+        optimization {
+            consumerKeepRules.apply {
+                publish = true
+                file("consumer-rules.pro")
+            }
+        }
+
         // Enable host tests for the Android target
         withHostTest {}
     }

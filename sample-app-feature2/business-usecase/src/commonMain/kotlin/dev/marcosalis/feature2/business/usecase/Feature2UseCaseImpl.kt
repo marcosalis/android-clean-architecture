@@ -4,7 +4,7 @@ import dev.marcosalis.clean.data.access.Feature2Repository
 import dev.marcosalis.clean.feature2.entity.Feature2Action
 import javax.inject.Inject
 
-internal class Feature2UseCaseImpl @Inject constructor(
+class Feature2UseCaseImpl @Inject constructor(
     private val repository: Feature2Repository
 ) : Feature2UseCase {
 

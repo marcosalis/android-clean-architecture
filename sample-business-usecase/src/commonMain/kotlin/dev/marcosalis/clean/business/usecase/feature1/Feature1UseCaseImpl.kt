@@ -6,7 +6,7 @@ import dev.marcosalis.clean.data.access.feature1.Feature1Repository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-internal class Feature1UseCaseImpl @Inject constructor(
+class Feature1UseCaseImpl @Inject constructor(
     private val repository: Feature1Repository
 ) : Feature1UseCase {
 
