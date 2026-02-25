@@ -18,7 +18,11 @@ dependencies {
 
 gradlePlugin {
     plugins {
-        // Base KMP + Android convention (shared by both modules)
+        register("androidApplication") {
+            id = "convention.android.application"
+            implementationClass = "AndroidApplicationConventionPlugin"
+        }
+
         register("kmpAndroid") {
             id = "convention.kmp.android"
             implementationClass = "KmpAndroidConventionPlugin"

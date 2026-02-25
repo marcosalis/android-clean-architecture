@@ -133,6 +133,14 @@ use cases and `ViewModel`s.
 
 Listed below, a quick description of each module and a class diagram with their relationships.
 
+### Gradle Convention Plugins
+
+A project with many Gradle modules naturally brings up the issue of configuration duplication. The
+sample project (both in its standard and KMP configuration) uses the new guidelines
+for [Convention Plugins](https://docs.gradle.org/current/userguide/implementing_gradle_plugins_convention.html)
+in order to share as much Gradle configuration as possible (for all types of modules used: Android
+application, library, Kotlin library and KMP). See `build-logic` folder for plugin code and setup.
+
 ### Modules relationships
 
 The following diagram expands from the more generic one above to illustrate the concrete modules'
