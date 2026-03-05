@@ -13,7 +13,7 @@ android {
         applicationId = "dev.marcosalis.clean"
 
         versionCode = 1
-        versionName = "3.1.0"
+        versionName = "3.2.0"
     }
 
     buildTypes {
