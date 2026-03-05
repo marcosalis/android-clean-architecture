@@ -23,6 +23,11 @@ gradlePlugin {
             implementationClass = "AndroidApplicationConventionPlugin"
         }
 
+        register("androidLibrary") {
+            id = "convention.android.library"
+            implementationClass = "AndroidLibraryConventionPlugin"
+        }
+
         register("kmpAndroid") {
             id = "convention.kmp.android"
             implementationClass = "KmpAndroidConventionPlugin"

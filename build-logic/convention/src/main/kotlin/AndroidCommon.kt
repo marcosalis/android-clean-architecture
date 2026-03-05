@@ -1,5 +1,6 @@
 
 import com.android.build.api.dsl.ApplicationExtension
+import com.android.build.api.dsl.LibraryExtension
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
 import org.gradle.api.artifacts.VersionCatalog
@@ -24,6 +25,27 @@ internal fun ApplicationExtension.configureAndroidApplication(libs: VersionCatal
     }
 }
 
+internal fun LibraryExtension.configureAndroidLibrary(libs: VersionCatalog) {
+    compileSdk = libs.findVersion("sdk.compile").get().requiredVersion.toInt()
+
+    defaultConfig {
+        minSdk = libs.findVersion("sdk.min").get().requiredVersion.toInt()
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
+    }
+
+    buildTypes {
+        release {
+            isMinifyEnabled = false
+        }
+    }
+}
+
 internal fun Project.configureKotlinJvm() {
     tasks.withType<KotlinJvmCompile>().configureEach {
         compilerOptions {
@@ -35,6 +57,12 @@ internal fun Project.configureKotlinJvm() {
 internal fun Project.commonAndroidDependencies(libs: VersionCatalog) {
     dependencies {
         add("implementation", libs.findLibrary("timber").get())
+    }
+}
+
+internal fun Project.kotlinLibraryDependencies(libs: VersionCatalog) {
+    dependencies {
+        add("implementation", libs.findLibrary("javax.inject").get())
     }
 }
 
