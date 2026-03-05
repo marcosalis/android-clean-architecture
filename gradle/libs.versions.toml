@@ -7,7 +7,7 @@ sdk-target = "36"
 #noinspection UnusedVersionCatalogEntry
 sdk-min = "28"
 
-agp = "9.0.1" # https://developer.android.com/reference/tools/gradle-api
+agp = "9.1.0" # https://developer.android.com/reference/tools/gradle-api
 kotlin = "2.3.10" # https://kotlinlang.org/docs/whatsnew-eap.html
 ksp = "2.3.4" #  https://github.com/google/ksp/releases
 kotlinxCoroutines = "1.10.2" # https://github.com/Kotlin/kotlinx.coroutines/releases
@@ -20,11 +20,12 @@ javaxInject = "1"
 androidCoreKtx = "1.17.0"
 lifecycleRuntimeKtx = "2.10.0" # https://developer.android.com/jetpack/androidx/releases/lifecycle
 activityCompose = "1.12.4"
-composeBom = "2026.02.00"
+composeBom = "2026.02.01"
 appcompat = "1.7.1"
-navigationCompose = "2.9.7" # https://developer.android.com/jetpack/androidx/releases/navigation
+navigation3 = "1.0.1" # https://developer.android.com/jetpack/androidx/releases/navigation3
+lifecycleViewmodelNav3 = "2.10.0"
 
-hilt = "2.59.1" # https://github.com/google/dagger/releases
+hilt = "2.59.2" # https://github.com/google/dagger/releases
 hiltAndroidX = "1.3.0" # https://developer.android.com/jetpack/androidx/releases/hilt
 
 timber = "5.0.1" # https://github.com/JakeWharton/timber/releases
@@ -53,7 +54,10 @@ androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "u
 androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
 androidx-compose-material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
-androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
+
+androidx-navigation3-runtime = { module = "androidx.navigation3:navigation3-runtime", version.ref = "navigation3" }
+androidx-navigation3-ui = { module = "androidx.navigation3:navigation3-ui", version.ref = "navigation3" }
+androidx-lifecycle-viewmodel-navigation3 = { module = "androidx.lifecycle:lifecycle-viewmodel-navigation3", version.ref = "lifecycleViewmodelNav3" }
 
 javax-inject = { module = "javax.inject:javax.inject", version.ref = "javaxInject" }
 
@@ -64,12 +68,12 @@ hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", ve
 
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 
+#noinspection UnusedVersionCatalogEntry
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
-androidx-navigation-testing = { group = "androidx.navigation", name = "navigation-testing", version.ref = "navigationCompose" }
 
 
 [plugins]

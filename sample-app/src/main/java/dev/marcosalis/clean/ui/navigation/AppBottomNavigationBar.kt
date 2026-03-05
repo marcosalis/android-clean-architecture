@@ -1,7 +1,6 @@
 package dev.marcosalis.clean.ui.navigation
 
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.DataArray
 import androidx.compose.material.icons.filled.DonutLarge
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.Icon
@@ -15,10 +14,8 @@ import androidx.compose.ui.tooling.preview.Preview
 fun AppBottomNavigationBar(
     isHomeSelected: Boolean,
     isFeature1Selected: Boolean,
-    isFeature2Selected: Boolean,
     onHomeClick: () -> Unit,
-    onFeature1Click: () -> Unit,
-    onFeature2Click: () -> Unit
+    onFeature1Click: () -> Unit
 ) {
     NavigationBar {
         NavigationBarItem(
@@ -43,17 +40,6 @@ fun AppBottomNavigationBar(
             },
             label = { Text(text = "Feature 1") }
         )
-        NavigationBarItem(
-            selected = isFeature2Selected,
-            onClick = onFeature2Click,
-            icon = {
-                Icon(
-                    imageVector = Icons.Default.DataArray,
-                    contentDescription = "Feature 2"
-                )
-            },
-            label = { Text(text = "Feature 2") }
-        )
     }
 }
 
@@ -63,9 +49,7 @@ private fun AppBottomNavigationBarPreview() {
     AppBottomNavigationBar(
         isHomeSelected = true,
         isFeature1Selected = false,
-        isFeature2Selected = false,
         onHomeClick = {},
         onFeature1Click = {},
-        onFeature2Click = {}
     )
 }
